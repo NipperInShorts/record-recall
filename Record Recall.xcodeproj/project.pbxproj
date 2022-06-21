@@ -21,6 +21,7 @@
 		A59D829A286213A000093FAA /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8299286213A000093FAA /* WeightInputView.swift */; };
 		A59D829C2862141500093FAA /* RepsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829B2862141500093FAA /* RepsInputView.swift */; };
 		A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829D286214AE00093FAA /* PrimaryButton.swift */; };
+		A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829F28623FA200093FAA /* CustomAlertView.swift */; };
 		A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678532857E5510092317D /* CondensedHistoryView.swift */; };
 		A5A678562857E5DA0092317D /* DataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678552857E5DA0092317D /* DataHelpers.swift */; };
 		A5A678582857E6280092317D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678572857E6280092317D /* Modifiers.swift */; };
@@ -53,6 +54,7 @@
 		A59D8299286213A000093FAA /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		A59D829B2862141500093FAA /* RepsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputView.swift; sourceTree = "<group>"; };
 		A59D829D286214AE00093FAA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		A59D829F28623FA200093FAA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A5A678532857E5510092317D /* CondensedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondensedHistoryView.swift; sourceTree = "<group>"; };
 		A5A678552857E5DA0092317D /* DataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelpers.swift; sourceTree = "<group>"; };
 		A5A678572857E6280092317D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		A5632ACF285916BE00071615 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A59D829F28623FA200093FAA /* CustomAlertView.swift */,
 				A5121D96285989AE00D4B2D9 /* AddRecordButton.swift */,
 				A5121D942859890800D4B2D9 /* SettingsButtonView.swift */,
 				A5A678532857E5510092317D /* CondensedHistoryView.swift */,
@@ -278,6 +281,7 @@
 				A5AC327528610E0800979E6D /* AddExerciseView.swift in Sources */,
 				A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */,
 				A56E8DAD2857C77100205474 /* ColorExt.swift in Sources */,
+				A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */,
 				A5A678582857E6280092317D /* Modifiers.swift in Sources */,
 				A56E8D9F2857C64B00205474 /* Record_RecallApp.swift in Sources */,
 				A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */,
