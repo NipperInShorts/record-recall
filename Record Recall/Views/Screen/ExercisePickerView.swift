@@ -64,7 +64,7 @@ struct ExercisePickerView: View {
         )
         .disabled(showPopover)
         .toolbarPopover(show: $showPopover) {
-            AddExerciseView(showing: $showPopover)
+            AddExerciseView(showing: $showPopover, viewModel: viewModel)
         }
     }
 }

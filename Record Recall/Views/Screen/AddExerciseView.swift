@@ -10,9 +10,14 @@ import SwiftUI
 struct AddExerciseView: View {
     @State private var text = ""
     @Binding var showing: Bool
+    @State private var didAttempt: Bool = false
+    @ObservedObject var viewModel: AddRecordViewModel
+    @FocusState private var nameIsFocused: Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             Button {
+                viewModel.startAddMachineOver()
                 showing.toggle()
             } label: {
                 Text("Cancel")
@@ -20,20 +25,30 @@ struct AddExerciseView: View {
                     .foregroundColor(.secondaryBlue)
             }
 
-            TextField("Add Exercise", text: $text)
+            TextField("Add Exercise", text: $viewModel.exerciseName)
+                .focused($nameIsFocused)
                 .padding(.vertical)
+                .onAppear {
+                    nameIsFocused = true
+                }
             Button {
-                StorageProvider().saveExercise(named: text)
+                viewModel.addExercise(named: viewModel.exerciseName)
             } label: {
                 PrimaryButton(text: "Add Exercise")
             }
-            .padding(.bottom)
+        
+            Text(viewModel.addExerciseStatus == .error ? "The exercise cannot be blank" : "")
+                .foregroundColor(.red)
+                .font(.system(size: 12, weight: .semibold))
+                .font(.callout)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 4)
         }
     }
 }
 
 struct AddExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        AddExerciseView(showing: .constant(true))
+        AddExerciseView(showing: .constant(true), viewModel: AddRecordViewModel())
     }
 }
