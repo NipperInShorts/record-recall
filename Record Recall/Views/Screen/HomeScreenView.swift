@@ -30,7 +30,6 @@ struct HomeScreenView: View {
                     CondensedHistoryView()
                 }
             }
-//            AddRecordButton(showingSheet: $showingSheet)
         }
         .background(Color.backgroundBlue)
     }
