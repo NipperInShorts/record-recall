@@ -13,35 +13,55 @@ struct ExercisePickerView: View {
     @Environment(\.dismiss) var dismiss
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
-    
+    @FetchRequest(fetchRequest: Record.allRecords)
+    var records: FetchedResults<Record>
+    let double = Double("140")
     var body: some View {
         VStack {
-            List(exercises) { exercise in
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(exercise.name!)
-                            .foregroundColor(.primaryBlue)
-                        Spacer()
+            if exercises.isEmpty {
+                VStack(spacing: 8) {
+                    Text("Glad you're here.")
+                        .bold()
+                    Text("The exercise list is empty.\nYou can add exercises by using the plus button at the top.")
+                }
+                .padding()
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                .rotationEffect(Angle(degrees: -15))
+                .padding()
+                .shadow(color: .primaryBlue.opacity(0.2), radius: 5, x: 5, y: 5)
+                .shadow(color: .primaryBlue.opacity(0.2), radius: 5, x: -5, y: -5)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List(exercises) { exercise in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(exercise.name!)
+                                .foregroundColor(.primaryBlue)
+                            Spacer()
+                            if (viewModel.exercise == exercise) {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.darkBlue)
+                            }
+                        }
+                    }
+                    //hack to make onTap fill full cell of list
+                    .contentShape(Rectangle())
+                    .onTapGesture {
                         if viewModel.exercise == exercise {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.darkBlue)
+                            viewModel.setExercise(exercise: nil)
+                        } else {
+                            viewModel.setExercise(exercise: exercise)
                         }
                     }
                 }
-                .contentShape(
-                    Rectangle()
-                )
-                .onTapGesture {
-                    if viewModel.exercise == exercise {
-                        viewModel.setExercise(exercise: nil)
-                    } else {
-                        viewModel.setExercise(exercise: exercise)
-                    }
-                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(showPopover ? Color.primary.opacity(0.5): Color.clear)
         }
+        .onAppear {
+            let appearance = UITableView.appearance()
+            appearance.backgroundColor = UIColor(Color.backgroundBlue)
+        }
+        .background(Color.backgroundBlue)
         .navigationTitle("Exercises")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(

@@ -10,9 +10,9 @@ import CoreData
 
 public class PersistentContainer: NSPersistentContainer {}
 
-struct StorageProvider {
+public class StorageProvider {
     public let persistentContainer: PersistentContainer
-    
+    static let storageProvider = StorageProvider()
     public init() {
         persistentContainer = PersistentContainer(name: "DataModel")
         persistentContainer.loadPersistentStores { description, error in
@@ -45,6 +45,16 @@ public extension Exercise {
         let request: NSFetchRequest<Exercise> = Exercise.fetchRequest()
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Exercise.name, ascending: true)
+        ]
+        return request
+    }
+}
+
+public extension Record {
+    static var allRecords: NSFetchRequest<Record> {
+        let request: NSFetchRequest<Record> = Record.fetchRequest()
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Record.exercise, ascending: true)
         ]
         return request
     }

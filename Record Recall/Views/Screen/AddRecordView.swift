@@ -13,8 +13,9 @@ struct LiftData: Identifiable {
     let name: String
 }
 
-enum Unit {
-    case metric, imperial
+enum Unit: String {
+    case metric = "metric"
+    case imperial = "imperial"
 }
 
 
@@ -108,7 +109,11 @@ struct AddRecordView: View {
     }
     
     private func saveRecord() -> Void {
-        viewModel.saveData()
+        do {
+            try viewModel.saveData()
+        } catch {
+            print("Failed to save", error)
+        }
     }
 }
 

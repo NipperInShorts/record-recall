@@ -23,7 +23,7 @@ struct WeightInputView: View {
                         internalWeight = Helper.weightValidator(newValue: newValue, weight: self.internalWeight)
                     })
                     .onChange(of: internalWeight, perform: { newValue in
-                        viewModel.reps = internalWeight
+                        viewModel.weight = internalWeight
                     })
                     .keyboardType(.decimalPad)
                     .padding()

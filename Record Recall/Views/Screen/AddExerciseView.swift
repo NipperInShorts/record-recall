@@ -32,7 +32,11 @@ struct AddExerciseView: View {
                     nameIsFocused = true
                 }
             Button {
-                viewModel.addExercise(named: viewModel.exerciseName)
+                viewModel.addExercise()
+                if viewModel.addExerciseStatus == .success {
+                    showing = false
+                    viewModel.startAddMachineOver()
+                }
             } label: {
                 PrimaryButton(text: "Add Exercise")
             }
