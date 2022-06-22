@@ -22,6 +22,7 @@
 		A59D829C2862141500093FAA /* RepsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829B2862141500093FAA /* RepsInputView.swift */; };
 		A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829D286214AE00093FAA /* PrimaryButton.swift */; };
 		A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829F28623FA200093FAA /* CustomAlertView.swift */; };
+		A59D82A2286366D200093FAA /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D82A1286366D200093FAA /* AppTabView.swift */; };
 		A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678532857E5510092317D /* CondensedHistoryView.swift */; };
 		A5A678582857E6280092317D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678572857E6280092317D /* Modifiers.swift */; };
 		A5A6785A2857E6690092317D /* TextExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678592857E6690092317D /* TextExt.swift */; };
@@ -54,6 +55,7 @@
 		A59D829B2862141500093FAA /* RepsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputView.swift; sourceTree = "<group>"; };
 		A59D829D286214AE00093FAA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		A59D829F28623FA200093FAA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		A59D82A1286366D200093FAA /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		A5A678532857E5510092317D /* CondensedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondensedHistoryView.swift; sourceTree = "<group>"; };
 		A5A678572857E6280092317D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		A5A678592857E6690092317D /* TextExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExt.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */,
 				A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */,
 				A5AC327428610E0800979E6D /* AddExerciseView.swift */,
+				A59D82A1286366D200093FAA /* AppTabView.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				A56E8DA12857C64B00205474 /* ContentView.swift in Sources */,
 				A5A6785A2857E6690092317D /* TextExt.swift in Sources */,
 				A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */,
+				A59D82A2286366D200093FAA /* AppTabView.swift in Sources */,
 				A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */,
 				A5121D952859890800D4B2D9 /* SettingsButtonView.swift in Sources */,
 				A5AC327528610E0800979E6D /* AddExerciseView.swift in Sources */,
