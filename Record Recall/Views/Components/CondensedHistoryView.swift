@@ -19,18 +19,18 @@ struct CondensedHistoryView: View {
             HistorySortBy()
                 .padding()
             LazyVGrid(columns: columns, alignment: .leading, spacing: 0) {
-                ForEach(liftRecords) { liftRecord in
-                    Section(header: ExerciseHeader(exercise: liftRecord.exercise), footer: ExerciseFooter(exercise: liftRecord.exercise)) {
-                        Group {
-                            ExerciseGroupHeader(headerTitle:"weight")
-                            ExerciseGroupHeader(headerTitle:"reps")
-                            ExerciseGroupHeader(headerTitle:"date")
-                        }
-                        ForEach(Array(zip(liftRecord.records.indices, liftRecord.records)), id: \.1) { index, individualRecord in
-                            RecordLineItem(record: individualRecord, date: liftRecord.date, index: index)
-                        }
-                    }
-                }
+//                ForEach(liftRecords) { liftRecord in
+//                    Section(header: ExerciseHeader(exercise: liftRecord.exercise), footer: ExerciseFooter(exercise: liftRecord.exercise)) {
+//                        Group {
+//                            ExerciseGroupHeader(headerTitle:"weight")
+//                            ExerciseGroupHeader(headerTitle:"reps")
+//                            ExerciseGroupHeader(headerTitle:"date")
+//                        }
+//                        ForEach(Array(zip(liftRecord.records.indices, liftRecord.records)), id: \.1) { index, individualRecord in
+//                            RecordLineItem(record: individualRecord, date: liftRecord.date, index: index)
+//                        }
+//                    }
+//                }
             }
         }
     }
@@ -59,39 +59,39 @@ struct ExerciseFooter: View {
     }
 }
 
-struct RecordLineItem: View {
-    let record: Record
-    let date: Date
-    let index: Int
-    var body: some View {
-        Group {
-            HStack(spacing: 2) {
-                Text(record.weight)
-                    .bold()
-                    .foregroundColor(.primaryBlue)
-                Text("kgs")
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundColor(.secondaryBlue)
-            }
-            Text("\(record.reps)")
-                .foregroundColor(.primaryBlue)
-                .bold()
-            Text("\(Helper.getFriendlyDateString(from: date))")
-                .foregroundColor(.secondaryBlue)
-                .font(.caption)
-                .fontWeight(.medium)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .frame(minHeight: 22)
-        .padding(.vertical, 8)
-        .background(isEvenRow(index) ? .clear : .highlightBlue)
-    }
-    
-    private func isEvenRow(_ index: Int) -> Bool {
-        return (index % 2) == 0
-    }
-}
+//struct RecordLineItem: View {
+//    let record: Record
+//    let date: Date
+//    let index: Int
+//    var body: some View {
+//        Group {
+//            HStack(spacing: 2) {
+//                Text(record.weight)
+//                    .bold()
+//                    .foregroundColor(.primaryBlue)
+//                Text("kgs")
+//                    .font(.caption)
+//                    .fontWeight(.medium)
+//                    .foregroundColor(.secondaryBlue)
+//            }
+//            Text("\(record.reps)")
+//                .foregroundColor(.primaryBlue)
+//                .bold()
+//            Text("\(Helper.getFriendlyDateString(from: date))")
+//                .foregroundColor(.secondaryBlue)
+//                .font(.caption)
+//                .fontWeight(.medium)
+//        }
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .frame(minHeight: 22)
+//        .padding(.vertical, 8)
+//        .background(isEvenRow(index) ? .clear : .highlightBlue)
+//    }
+//    
+//    private func isEvenRow(_ index: Int) -> Bool {
+//        return (index % 2) == 0
+//    }
+//}
 
 struct ExerciseHeader: View {
     let exercise: String
