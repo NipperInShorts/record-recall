@@ -10,6 +10,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="reps" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="unit" attributeType="String"/>
@@ -17,7 +18,7 @@
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="records" inverseEntity="Exercise"/>
     </entity>
     <elements>
-        <element name="Record" positionX="-27" positionY="27" width="128" height="104"/>
-        <element name="Exercise" positionX="-18" positionY="72" width="128" height="59"/>
+        <element name="Exercise" positionX="-621.546875" positionY="23.515625" width="128" height="73"/>
+        <element name="Record" positionX="-282.64453125" positionY="-21.95703125" width="128" height="133"/>
     </elements>
 </model>

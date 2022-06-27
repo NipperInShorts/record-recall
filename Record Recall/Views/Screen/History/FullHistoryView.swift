@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct FullHistoryView: View {
+
     var body: some View {
-        Text("History View")
+        NavigationView {
+            ExerciseHistoryView()
+        }
     }
 }
 

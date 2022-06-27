@@ -13,9 +13,6 @@ struct ExercisePickerView: View {
     @Environment(\.dismiss) var dismiss
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
-    @FetchRequest(fetchRequest: Record.allRecords)
-    var records: FetchedResults<Record>
-    let double = Double("140")
     var body: some View {
         VStack {
             if exercises.isEmpty {

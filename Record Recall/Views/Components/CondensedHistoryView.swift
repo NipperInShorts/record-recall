@@ -53,9 +53,7 @@ struct ExerciseFooter: View {
                 .font(.caption)
                 .foregroundColor(.primaryBlue)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.top, 20)
-        .padding(.bottom, 30)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
