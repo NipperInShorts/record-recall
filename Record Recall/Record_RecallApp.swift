@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct Record_RecallApp: App {
-    let storageProvider = StorageProvider.storageProvider
+    let storageProvider = StorageProvider.shared
     var body: some Scene {
         WindowGroup {
             ContentView()

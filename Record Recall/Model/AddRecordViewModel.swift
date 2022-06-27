@@ -22,7 +22,7 @@ enum AddExerciseError: Error {
 
 // Exercise Selected
 class AddRecordViewModel: ObservableObject {
-    let storageProvider: StorageProvider = StorageProvider.storageProvider
+    let storageProvider: StorageProvider = StorageProvider.shared
     @Published var weight = ""
     @Published var notes = ""
     @Published var unit = Unit.metric
@@ -31,6 +31,7 @@ class AddRecordViewModel: ObservableObject {
     @Published var exerciseName: String = ""
     @Published private(set) var addExerciseStatus: AddExerciseStatus = .idle
     @Published var addError: AddExerciseError?
+    @Published var date: Date = Date()
     
     func setExercise(exercise: Exercise?) -> Void {
         if let exercise = exercise {
@@ -61,8 +62,8 @@ class AddRecordViewModel: ObservableObject {
         record.reps = Double(self.reps) ?? 0
         record.notes = self.notes
         record.unit = self.unit.rawValue
-        self.exercise!.addToRecords(record)
-        
+        record.date = self.date
+        self.exercise?.addToRecords(record)
         do {
             try storageProvider.persistentContainer.viewContext.save()
         } catch {

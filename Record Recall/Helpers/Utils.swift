@@ -78,3 +78,39 @@ class Helper {
             .filter { "0123456789".contains($0) }
     }
 }
+
+
+struct Metric: Codable {
+    var name: String = "DoubleConverter"
+    var value: Double
+}
+
+extension Metric: CustomStringConvertible {
+    
+    private static var valueFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
+    
+    var formattedValue: String {
+        let number = NSNumber(value: value)
+        var formattedValue = Self.valueFormatter.string(from: number)!
+        
+        
+        while formattedValue.last == "0" {
+            formattedValue.removeLast()
+        }
+        
+        if formattedValue.last == "." {
+            formattedValue.removeLast()
+        }
+        return formattedValue
+    }
+    
+    var description: String {
+        return "\(name): \(formattedValue)"
+    }
+}
