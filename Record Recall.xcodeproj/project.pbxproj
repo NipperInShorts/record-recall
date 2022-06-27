@@ -23,9 +23,8 @@
 		A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829D286214AE00093FAA /* PrimaryButton.swift */; };
 		A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829F28623FA200093FAA /* CustomAlertView.swift */; };
 		A59D82A2286366D200093FAA /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D82A1286366D200093FAA /* AppTabView.swift */; };
-		A5A35B5F2863C5F400C0500F /* RecordsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B5E2863C5F400C0500F /* RecordsHistoryView.swift */; };
 		A5A35B612863C61E00C0500F /* ExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */; };
-		A5A35B632864031600C0500F /* NoExerciseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B622864031600C0500F /* NoExerciseHistory.swift */; };
+		A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B622864031600C0500F /* EmptyScreenMessage.swift */; };
 		A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6428640A1000C0500F /* RecordDetail.swift */; };
 		A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678532857E5510092317D /* CondensedHistoryView.swift */; };
 		A5A678582857E6280092317D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678572857E6280092317D /* Modifiers.swift */; };
@@ -60,9 +59,8 @@
 		A59D829D286214AE00093FAA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		A59D829F28623FA200093FAA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A59D82A1286366D200093FAA /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
-		A5A35B5E2863C5F400C0500F /* RecordsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsHistoryView.swift; sourceTree = "<group>"; };
 		A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryView.swift; sourceTree = "<group>"; };
-		A5A35B622864031600C0500F /* NoExerciseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExerciseHistory.swift; sourceTree = "<group>"; };
+		A5A35B622864031600C0500F /* EmptyScreenMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenMessage.swift; sourceTree = "<group>"; };
 		A5A35B6428640A1000C0500F /* RecordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetail.swift; sourceTree = "<group>"; };
 		A5A678532857E5510092317D /* CondensedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondensedHistoryView.swift; sourceTree = "<group>"; };
 		A5A678572857E6280092317D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -173,8 +171,7 @@
 				A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */,
 				A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */,
 				A5A35B6428640A1000C0500F /* RecordDetail.swift */,
-				A5A35B622864031600C0500F /* NoExerciseHistory.swift */,
-				A5A35B5E2863C5F400C0500F /* RecordsHistoryView.swift */,
+				A5A35B622864031600C0500F /* EmptyScreenMessage.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -290,14 +287,13 @@
 				A59D8298286205E300093FAA /* PopoverViewExt.swift in Sources */,
 				A5121D97285989AE00D4B2D9 /* AddRecordButton.swift in Sources */,
 				A5E847A6285B72DA00E3F0F2 /* FullHistoryView.swift in Sources */,
-				A5A35B5F2863C5F400C0500F /* RecordsHistoryView.swift in Sources */,
 				A59D829C2862141500093FAA /* RepsInputView.swift in Sources */,
 				A5AC3277286114F400979E6D /* AddRecordViewModel.swift in Sources */,
 				A56E8DA12857C64B00205474 /* ContentView.swift in Sources */,
 				A5A6785A2857E6690092317D /* TextExt.swift in Sources */,
 				A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */,
 				A59D82A2286366D200093FAA /* AppTabView.swift in Sources */,
-				A5A35B632864031600C0500F /* NoExerciseHistory.swift in Sources */,
+				A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */,
 				A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */,
 				A5121D952859890800D4B2D9 /* SettingsButtonView.swift in Sources */,
 				A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */,

@@ -16,19 +16,7 @@ struct ExercisePickerView: View {
     var body: some View {
         VStack {
             if exercises.isEmpty {
-                VStack(spacing: 8) {
-                    Text("Glad you're here.")
-                        .bold()
-                    Text("The exercise list is empty.\nYou can add exercises by using the plus button at the top.")
-                }
-                .padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                .rotationEffect(Angle(degrees: -15))
-                .padding()
-                .shadow(color: .primaryBlue.opacity(0.2), radius: 5, x: 5, y: 5)
-                .shadow(color: .primaryBlue.opacity(0.2), radius: 5, x: -5, y: -5)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                EmptyScreenMessage(title: "Glad you're here.", message: "The exercise list is empty.\nYou can add exercises by using the plus button at the top.")
             } else {
                 List(exercises) { exercise in
                     VStack(alignment: .leading) {

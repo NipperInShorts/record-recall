@@ -26,7 +26,7 @@ struct ExerciseHistoryView: View {
     var body: some View {
         VStack {
             if exercises.isEmpty {
-                NoExerciseHistory()
+                EmptyScreenMessage(title: "You made it!", message: "There is no history of records...yet.\nYou can add records by using the plus button at the bottom.")
             } else {
                 List {
                     ForEach(exercises) { exercise in
