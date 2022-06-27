@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct NoExerciseHistory: View {
+struct EmptyScreenMessage: View {
+    var title: String
+    var message: String
     var body: some View {
         VStack(spacing: 8) {
-            Text("You made it!")
+            Text(title)
                 .bold()
-            Text("There is no history of records...yet.\nYou can add records by using the plus button at the bottom.")
+            Text(message)
         }
         .padding()
         .background(Color.white)
@@ -27,6 +29,6 @@ struct NoExerciseHistory: View {
 
 struct NoExerciseHistory_Previews: PreviewProvider {
     static var previews: some View {
-        NoExerciseHistory()
+        EmptyScreenMessage(title: "You made it!", message: "There is no history of records...yet.\nYou can add records by using the plus button at the bottom.")
     }
 }
