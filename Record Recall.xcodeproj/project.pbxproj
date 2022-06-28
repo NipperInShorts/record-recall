@@ -114,13 +114,12 @@
 		A5632AD0285916C600071615 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				A5A35B67286B5F6A00C0500F /* Exercise */,
+				A5A35B66286B5F5200C0500F /* Record */,
 				A58C20682863689200ECCAF2 /* History */,
 				A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */,
-				A5E6562828591B9300A7AEDB /* AddRecordView.swift */,
 				A59D829B2862141500093FAA /* RepsInputView.swift */,
 				A59D8299286213A000093FAA /* WeightInputView.swift */,
-				A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */,
-				A5AC327428610E0800979E6D /* AddExerciseView.swift */,
 				A59D82A1286366D200093FAA /* AppTabView.swift */,
 			);
 			path = Screen;
@@ -174,6 +173,23 @@
 				A5A35B622864031600C0500F /* EmptyScreenMessage.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		A5A35B66286B5F5200C0500F /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				A5E6562828591B9300A7AEDB /* AddRecordView.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		A5A35B67286B5F6A00C0500F /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				A5AC327428610E0800979E6D /* AddExerciseView.swift */,
+				A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */,
+			);
+			path = Exercise;
 			sourceTree = "<group>";
 		};
 		A5A6785B2857E6760092317D /* Helpers */ = {
