@@ -16,10 +16,11 @@ extension Sequence where Iterator.Element: Hashable {
 }
 
 struct RecordDetail: View {
-    @FetchRequest var fetchRequest: FetchedResults<Record>
-    var record: Record
+    @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
     @State var sortedRep = ""
     @State var sortedReps: [Double] = []
+    @FetchRequest var fetchRequest: FetchedResults<Record>
+    var record: Record
     
     var body: some View {
         List {
@@ -121,6 +122,14 @@ struct RecordDetail: View {
                         .foregroundColor(.darkBlue)
                     }
                 }
+            }
+        }
+        .toolbar {
+            Button {
+                record.exercise?.watchlist.toggle()
+                viewModel.addToWatchlist()
+            } label: {
+                Image(systemName: record.exercise!.watchlist ? "bookmark.fill" : "bookmark")
             }
         }
         .navigationTitle((record.exercise?.name)!)

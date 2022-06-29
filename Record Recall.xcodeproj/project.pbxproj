@@ -26,6 +26,7 @@
 		A5A35B612863C61E00C0500F /* ExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */; };
 		A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B622864031600C0500F /* EmptyScreenMessage.swift */; };
 		A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6428640A1000C0500F /* RecordDetail.swift */; };
+		A5A35B6C286CFC0500C0500F /* ViewRouterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */; };
 		A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678532857E5510092317D /* CondensedHistoryView.swift */; };
 		A5A678582857E6280092317D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678572857E6280092317D /* Modifiers.swift */; };
 		A5A6785A2857E6690092317D /* TextExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678592857E6690092317D /* TextExt.swift */; };
@@ -37,7 +38,6 @@
 		A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */; };
 		A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */; };
 		A5E847A6285B72DA00E3F0F2 /* FullHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */; };
-		A5E9DB4A2857E41D0046DDF3 /* HistorySortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9DB492857E41D0046DDF3 /* HistorySortBy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +62,7 @@
 		A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryView.swift; sourceTree = "<group>"; };
 		A5A35B622864031600C0500F /* EmptyScreenMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenMessage.swift; sourceTree = "<group>"; };
 		A5A35B6428640A1000C0500F /* RecordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetail.swift; sourceTree = "<group>"; };
+		A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRouterModel.swift; path = "Record Recall/Model/ViewRouterModel.swift"; sourceTree = SOURCE_ROOT; };
 		A5A678532857E5510092317D /* CondensedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondensedHistoryView.swift; sourceTree = "<group>"; };
 		A5A678572857E6280092317D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		A5A678592857E6690092317D /* TextExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExt.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHistoryView.swift; sourceTree = "<group>"; };
-		A5E9DB492857E41D0046DDF3 /* HistorySortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySortBy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,6 @@
 				A5121D96285989AE00D4B2D9 /* AddRecordButton.swift */,
 				A5121D942859890800D4B2D9 /* SettingsButtonView.swift */,
 				A5A678532857E5510092317D /* CondensedHistoryView.swift */,
-				A5E9DB492857E41D0046DDF3 /* HistorySortBy.swift */,
 				A56E8DB22857CA8800205474 /* RecentRecords.swift */,
 				A56E8DB02857CA1000205474 /* WelcomeMessage.swift */,
 				A59D829D286214AE00093FAA /* PrimaryButton.swift */,
@@ -121,6 +120,7 @@
 				A59D829B2862141500093FAA /* RepsInputView.swift */,
 				A59D8299286213A000093FAA /* WeightInputView.swift */,
 				A59D82A1286366D200093FAA /* AppTabView.swift */,
+				A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -304,6 +304,7 @@
 				A5121D97285989AE00D4B2D9 /* AddRecordButton.swift in Sources */,
 				A5E847A6285B72DA00E3F0F2 /* FullHistoryView.swift in Sources */,
 				A59D829C2862141500093FAA /* RepsInputView.swift in Sources */,
+				A5A35B6C286CFC0500C0500F /* ViewRouterModel.swift in Sources */,
 				A5AC3277286114F400979E6D /* AddRecordViewModel.swift in Sources */,
 				A56E8DA12857C64B00205474 /* ContentView.swift in Sources */,
 				A5A6785A2857E6690092317D /* TextExt.swift in Sources */,
@@ -327,7 +328,6 @@
 				A59D829A286213A000093FAA /* WeightInputView.swift in Sources */,
 				A56E8DB12857CA1000205474 /* WelcomeMessage.swift in Sources */,
 				A5AC32702861006200979E6D /* DataModel.xcdatamodeld in Sources */,
-				A5E9DB4A2857E41D0046DDF3 /* HistorySortBy.swift in Sources */,
 				A56E8DAF2857C98000205474 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

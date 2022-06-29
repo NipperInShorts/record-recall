@@ -41,6 +41,14 @@ class AddRecordViewModel: ObservableObject {
         }
     }
     
+    func addToWatchlist() -> Void {
+        do {
+            try storageProvider.persistentContainer.viewContext.save()
+        } catch {
+            storageProvider.persistentContainer.viewContext.rollback()
+        }
+    }
+    
     func startAddMachineOver() -> Void {
         addExerciseStatus = .idle
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExerciseHistoryView: View {
+    @EnvironmentObject private var tabModel: ViewRouterModel
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
     
@@ -31,9 +32,12 @@ struct ExerciseHistoryView: View {
                 List {
                     ForEach(exercises) { exercise in
                         ForEach(filteredRecords(exercise: exercise), id: \.self) { record in
-                            NavigationLink(destination: {
+                            NavigationLink(
+                                tag: exercise.name!,
+                                selection: $tabModel.selectedDetail
+                            ) {
                                 RecordDetail(record: record)
-                            }, label: {
+                            } label: {
                                 VStack(spacing: 16) {
                                     HStack {
                                         Text(exercise.name!)
@@ -54,7 +58,7 @@ struct ExerciseHistoryView: View {
                                     ExerciseFooter(exercise: exercise.name!)
                                 }
                                 .padding(.top, 8)
-                            })
+                            }
                         }
                     }
                 }

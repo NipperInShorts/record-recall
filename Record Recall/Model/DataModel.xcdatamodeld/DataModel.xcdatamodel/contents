@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
+        <attribute name="watchlist" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="exercise" inverseEntity="Record"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -18,7 +19,7 @@
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="records" inverseEntity="Exercise"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-621.546875" positionY="23.515625" width="128" height="73"/>
+        <element name="Exercise" positionX="-621.546875" positionY="23.515625" width="128" height="74"/>
         <element name="Record" positionX="-282.64453125" positionY="-21.95703125" width="128" height="133"/>
     </elements>
 </model>
