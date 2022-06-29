@@ -139,7 +139,7 @@ struct WeightRepsView: View {
                         .foregroundColor(.primaryBlue)
                         .minimumScaleFactor(0.75)
                         .lineLimit(1)
-                    Text("reps")
+                    Text("rep(s)")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondaryBlue)
                 }
