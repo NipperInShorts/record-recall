@@ -132,20 +132,6 @@ struct AddRecordView: View {
     }
 }
 
-struct FooterView: View {
-    var lift: String = ""
-    var body: some View {
-        lift.isEmpty ? nil : Button(action: {
-            print("Add \(lift)")
-        }, label: {
-            Label("Add \(lift)", systemImage: "plus")
-        })
-        .listRowBackground(Color.clear)
-        .listRowSeparatorTint(.secondaryBlue)
-        .listRowSeparator(.hidden, edges: .top)
-    }
-}
-
 struct AddRecordView_Previews: PreviewProvider {
     static var previews: some View {
         AddRecordView()
