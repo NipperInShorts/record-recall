@@ -23,10 +23,11 @@ struct AddRecordView: View {
     
     @StateObject private var viewModel = AddRecordViewModel()
     @State private var internalReps = ""
+    @State private var errorMessage = ""
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text(viewModel.exercise != nil ? "New \(viewModel.exercise?.name ?? "") Record" : "New Record")
@@ -95,7 +96,15 @@ struct AddRecordView: View {
                         } label: {
                             PrimaryButton(text: "Add Record")
                         }
-                        .padding(.bottom)
+                        .padding(.bottom, !errorMessage.isEmpty ? 0 : 16)
+                        if !errorMessage.isEmpty {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .font(.system(size: 12, weight: .semibold))
+                                .font(.callout)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.top, -10)
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -111,8 +120,14 @@ struct AddRecordView: View {
     private func saveRecord() -> Void {
         do {
             try viewModel.saveData()
+            errorMessage = ""
+            internalReps = ""
+        } catch AddExerciseError.repsIsEmpty {
+            errorMessage = "Reps shouldn't be empty."
+        } catch AddExerciseError.exerciseNotSelected {
+            errorMessage = "Make sure you select an exercise to associate the record with."
         } catch {
-            print("Failed to save", error)
+            errorMessage = "Unable to save the record. Try again."
         }
     }
 }

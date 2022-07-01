@@ -25,6 +25,11 @@ struct WeightInputView: View {
                     .onChange(of: internalWeight, perform: { newValue in
                         viewModel.weight = internalWeight
                     })
+                    .onReceive(viewModel.$weight, perform: { newValue in
+                        if newValue.isEmpty {
+                            internalWeight = ""
+                        }
+                    })
                     .keyboardType(.decimalPad)
                     .padding()
                     .foregroundColor(.primaryBlue)

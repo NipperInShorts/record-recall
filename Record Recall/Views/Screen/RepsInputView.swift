@@ -23,6 +23,11 @@ struct RepsInputView: View {
                 .onChange(of: internalReps, perform: { newValue in
                     viewModel.reps = internalReps
                 })
+                .onReceive(viewModel.$reps, perform: { newValue in
+                    if newValue.isEmpty {
+                        internalReps = ""
+                    }
+                })
                 .keyboardType(.decimalPad)
                 .padding()
                 .foregroundColor(.primaryBlue)
