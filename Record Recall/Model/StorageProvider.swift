@@ -30,15 +30,10 @@ extension StorageProvider {
     func saveExercise(named name: String) {
         let exercise = Exercise(context: StorageProvider.shared.persistentContainer.viewContext)
         exercise.name = name
-        
-        print("EXercise save", exercise)
-        
         do {
             try StorageProvider.shared.persistentContainer.viewContext.save()
-            print("Exercise saved")
         } catch {
             StorageProvider.shared.persistentContainer.viewContext.rollback()
-            print("Exercise save failed")
         }
     }
 }

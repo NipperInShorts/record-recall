@@ -75,10 +75,8 @@ class AddRecordViewModel: ObservableObject {
         do {
             try storageProvider.persistentContainer.viewContext.save()
             resetInputs()
-            print("did save")
         } catch {
             storageProvider.persistentContainer.viewContext.rollback()
-            print("Failed to save")
         }
     }
     
