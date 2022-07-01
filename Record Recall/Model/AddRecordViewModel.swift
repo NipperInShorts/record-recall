@@ -74,8 +74,11 @@ class AddRecordViewModel: ObservableObject {
         self.exercise?.addToRecords(record)
         do {
             try storageProvider.persistentContainer.viewContext.save()
+            resetInputs()
+            print("did save")
         } catch {
             storageProvider.persistentContainer.viewContext.rollback()
+            print("Failed to save")
         }
     }
     
@@ -92,5 +95,13 @@ class AddRecordViewModel: ObservableObject {
         }
         
         saveRecord()
+    }
+    
+    private func resetInputs() {
+        self.notes = ""
+        self.unit = Unit.metric
+        self.weight = ""
+        self.reps = ""
+        self.exercise = nil
     }
 }
