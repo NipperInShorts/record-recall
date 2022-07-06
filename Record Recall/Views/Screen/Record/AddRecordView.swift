@@ -68,6 +68,8 @@ struct AddRecordView: View {
                             RepsInputView(viewModel: viewModel)
                         }
                         
+                        DateInputView(viewModel: viewModel)
+                        
                         // add note
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Notes:")

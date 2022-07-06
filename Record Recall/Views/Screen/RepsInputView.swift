@@ -24,9 +24,7 @@ struct RepsInputView: View {
                     viewModel.reps = internalReps
                 })
                 .onReceive(viewModel.$reps, perform: { newValue in
-                    if newValue.isEmpty {
-                        internalReps = ""
-                    }
+                    internalReps = newValue
                 })
                 .keyboardType(.decimalPad)
                 .padding()
