@@ -6,10 +6,32 @@
 //
 
 import SwiftUI
+import CoreData
+
+class WatchListViewModel: ObservableObject {
+    @Published var watchlist: [Exercise] = []
+    
+    let viewContext = StorageProvider.shared.persistentContainer.viewContext
+    
+    func getWatchlist() {
+        let fetchRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Exercise.name, ascending: true),
+        ]
+        fetchRequest.predicate = NSPredicate(format: "watchlist == YES")
+        
+        do {
+            let result = try viewContext.fetch(fetchRequest)
+            watchlist = result
+            print(result)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
 
 struct CondensedHistoryView: View {
-    @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
-    @FetchRequest var fetchRequest: FetchedResults<Exercise>
+    @ObservedObject var viewModel: WatchListViewModel = WatchListViewModel()
     
     let columns = [
         GridItem(.flexible(),spacing: 0, alignment: .center),
@@ -41,9 +63,9 @@ struct CondensedHistoryView: View {
                 Spacer()
             }
             .padding()
-            if fetchRequest.count > 0 {
+            if viewModel.watchlist.count > 0 {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 0) {
-                    ForEach(fetchRequest, id:\.self) { exercise in
+                    ForEach(viewModel.watchlist, id:\.self) { exercise in
                         Section(header: ExerciseHeader(exercise: exercise.name!), footer: ExerciseFooter(exercise: exercise.name!)) {
                             Group {
                                 ExerciseGroupHeader(headerTitle:"weight")
@@ -64,12 +86,10 @@ struct CondensedHistoryView: View {
                 .padding(.top, 30)
             }
         }
-    }
-    
-    init() {
-        _fetchRequest = FetchRequest<Exercise>(sortDescriptors: [
-            NSSortDescriptor(keyPath: \Exercise.name, ascending: true),
-        ], predicate: NSPredicate(format: "watchlist == YES"))
+        .onAppear {
+            viewModel.getWatchlist()
+            print("APPEARING")
+        }
     }
 }
 
@@ -157,12 +177,5 @@ struct ExerciseGroupHeader: View {
             .underline()
             .foregroundColor(.secondaryBlue)
             .padding(.bottom, 6)
-    }
-}
-
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CondensedHistoryView()
     }
 }

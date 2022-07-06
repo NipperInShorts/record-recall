@@ -17,6 +17,8 @@
 		A56E8DAF2857C98000205474 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E8DAE2857C98000205474 /* Utils.swift */; };
 		A56E8DB12857CA1000205474 /* WelcomeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E8DB02857CA1000205474 /* WelcomeMessage.swift */; };
 		A56E8DB32857CA8800205474 /* RecentRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E8DB22857CA8800205474 /* RecentRecords.swift */; };
+		A5957D4F286F508400C51FFC /* RecordLineDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5957D4E286F508400C51FFC /* RecordLineDetail.swift */; };
+		A5957D532874D88700C51FFC /* DateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5957D522874D88700C51FFC /* DateInputView.swift */; };
 		A59D8298286205E300093FAA /* PopoverViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8297286205E300093FAA /* PopoverViewExt.swift */; };
 		A59D829A286213A000093FAA /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8299286213A000093FAA /* WeightInputView.swift */; };
 		A59D829C2862141500093FAA /* RepsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829B2862141500093FAA /* RepsInputView.swift */; };
@@ -53,6 +55,8 @@
 		A56E8DAE2857C98000205474 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A56E8DB02857CA1000205474 /* WelcomeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessage.swift; sourceTree = "<group>"; };
 		A56E8DB22857CA8800205474 /* RecentRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRecords.swift; sourceTree = "<group>"; };
+		A5957D4E286F508400C51FFC /* RecordLineDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLineDetail.swift; sourceTree = "<group>"; };
+		A5957D522874D88700C51FFC /* DateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputView.swift; sourceTree = "<group>"; };
 		A59D8297286205E300093FAA /* PopoverViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewExt.swift; sourceTree = "<group>"; };
 		A59D8299286213A000093FAA /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		A59D829B2862141500093FAA /* RepsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		A5632ACF285916BE00071615 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A5957D522874D88700C51FFC /* DateInputView.swift */,
 				A59D829F28623FA200093FAA /* CustomAlertView.swift */,
 				A5121D96285989AE00D4B2D9 /* AddRecordButton.swift */,
 				A5121D942859890800D4B2D9 /* SettingsButtonView.swift */,
@@ -169,7 +174,6 @@
 			children = (
 				A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */,
 				A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */,
-				A5A35B6428640A1000C0500F /* RecordDetail.swift */,
 				A5A35B622864031600C0500F /* EmptyScreenMessage.swift */,
 			);
 			path = History;
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				A5E6562828591B9300A7AEDB /* AddRecordView.swift */,
+				A5A35B6428640A1000C0500F /* RecordDetail.swift */,
+				A5957D4E286F508400C51FFC /* RecordLineDetail.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				A5AC3277286114F400979E6D /* AddRecordViewModel.swift in Sources */,
 				A56E8DA12857C64B00205474 /* ContentView.swift in Sources */,
 				A5A6785A2857E6690092317D /* TextExt.swift in Sources */,
+				A5957D532874D88700C51FFC /* DateInputView.swift in Sources */,
 				A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */,
 				A59D82A2286366D200093FAA /* AppTabView.swift in Sources */,
 				A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */,
@@ -319,6 +326,7 @@
 				A56E8DAD2857C77100205474 /* ColorExt.swift in Sources */,
 				A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */,
 				A5A678582857E6280092317D /* Modifiers.swift in Sources */,
+				A5957D4F286F508400C51FFC /* RecordLineDetail.swift in Sources */,
 				A56E8D9F2857C64B00205474 /* Record_RecallApp.swift in Sources */,
 				A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */,
 				A5E6562928591B9300A7AEDB /* AddRecordView.swift in Sources */,

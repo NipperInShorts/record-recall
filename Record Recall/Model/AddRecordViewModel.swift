@@ -95,11 +95,49 @@ class AddRecordViewModel: ObservableObject {
         saveRecord()
     }
     
+    func updateData(record: Record) throws {
+        if self.reps.isEmpty {
+            self.addError = .repsIsEmpty
+            throw AddExerciseError.repsIsEmpty
+        }
+        
+        if self.exercise == nil {
+            self.addError = .exerciseNotSelected
+            throw AddExerciseError.exerciseNotSelected
+        }
+        
+        updateRecord(record: record)
+    }
+    
+    private func updateRecord(record: Record) {
+        record.weight = Double(self.weight) ?? 0
+        record.reps = Double(self.reps) ?? 0
+        record.notes = self.notes
+        record.unit = self.unit.rawValue
+        record.date = self.date
+        do {
+            try storageProvider.persistentContainer.viewContext.save()
+        } catch {
+            storageProvider.persistentContainer.viewContext.rollback()
+        }
+    }
+    
     private func resetInputs() {
         self.notes = ""
         self.unit = Unit.metric
         self.weight = ""
         self.reps = ""
         self.exercise = nil
+    }
+    
+    func initializeView(with record: Record) {
+        self.exercise = record.exercise
+        self.notes = record.notes ?? ""
+        self.weight = Metric(value: record.weight).formattedValue
+        self.reps = Metric(value: record.reps).formattedValue
+        self.date = record.date!
+        print(self.weight)
+        print(self.reps)
+        self.unit = Unit.metric.rawValue == record.unit ? Unit.metric : Unit.imperial
     }
 }

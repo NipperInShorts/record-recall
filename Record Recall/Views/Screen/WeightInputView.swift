@@ -26,9 +26,7 @@ struct WeightInputView: View {
                         viewModel.weight = internalWeight
                     })
                     .onReceive(viewModel.$weight, perform: { newValue in
-                        if newValue.isEmpty {
-                            internalWeight = ""
-                        }
+                        internalWeight = newValue
                     })
                     .keyboardType(.decimalPad)
                     .padding()
