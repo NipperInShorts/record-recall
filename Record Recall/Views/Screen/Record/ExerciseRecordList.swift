@@ -15,13 +15,13 @@ extension Sequence where Iterator.Element: Hashable {
     }
 }
 
-struct RecordDetail: View {
+struct ExerciseRecordList: View {
     @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
     @ObservedObject var historyModel: HistoryViewModel = HistoryViewModel()
     @State var sortedRep = ""
     @State var sortedReps: [Double] = []
     @FetchRequest var fetchRequest: FetchedResults<Record>
-    @ObservedObject var record: Record
+    @ObservedObject var exercise: Exercise
     
     var body: some View {
         List {
@@ -96,7 +96,7 @@ struct RecordDetail: View {
                         ForEach(sortedReps, id:\.self) { theRep in
                             Button {
                                 fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                                    NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!),
+                                    NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!),
                                     NSPredicate(format: "reps = %@", Metric(value: theRep).formattedValue)
                                 ])
                                 sortedRep = Metric(value: theRep).formattedValue
@@ -107,7 +107,7 @@ struct RecordDetail: View {
                         }
                         Button(role: .destructive) {
                             fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
+                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!)
                             ])
                             sortedRep = ""
                         } label: {
@@ -132,13 +132,13 @@ struct RecordDetail: View {
         }
         .toolbar {
             Button {
-                record.exercise?.watchlist.toggle()
+                exercise.watchlist.toggle()
                 viewModel.addToWatchlist()
             } label: {
-                Image(systemName: record.exercise!.watchlist ? "bookmark.fill" : "bookmark")
+                Image(systemName: exercise.watchlist ? "bookmark.fill" : "bookmark")
             }
         }
-        .navigationTitle((record.exercise?.name)!)
+        .navigationTitle(exercise.name!)
         .onAppear {
             fetchInitial()
             filterReps()
@@ -154,7 +154,7 @@ struct RecordDetail: View {
     
     func fetchInitial() {
         fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
+            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!)
         ])
     }
     
@@ -167,10 +167,10 @@ struct RecordDetail: View {
     }
     
     
-    init(record: Record) {
-        self.record = record
+    init(exercise: Exercise) {
+        self.exercise = exercise
         _fetchRequest = FetchRequest<Record>(sortDescriptors: [
             NSSortDescriptor(keyPath: \Record.weight, ascending: false),
-        ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (record.exercise?.name!)!))
+        ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), exercise.name!))
     }
 }
