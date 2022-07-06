@@ -26,7 +26,7 @@ struct AddRecordView: View {
     @State private var errorMessage = ""
     
     var body: some View {
-        NavigationView {
+        NavigationPicker {
             VStack(alignment: .leading) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {

@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct HomeScreenView: View {
-    @State private var showingSheet = false
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {

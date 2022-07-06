@@ -10,7 +10,7 @@ import SwiftUI
 struct FullHistoryView: View {
 
     var body: some View {
-        NavigationView {
+        NavigationPicker {
             ExerciseHistoryView()
         }
     }

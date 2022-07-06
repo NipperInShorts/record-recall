@@ -9,9 +9,11 @@ import SwiftUI
 
 
 struct SettingsButtonView: View {
+    @State private var showingSheet = false
+    
     var body: some View {
         Button {
-            print("go to settings")
+            showingSheet.toggle()
         } label: {
             Image(systemName: "gearshape")
                 .foregroundColor(.primaryBlue)
@@ -23,6 +25,9 @@ struct SettingsButtonView: View {
                 ).shadow(color: .secondaryBlue.opacity(0.5), radius: 3, x: 2, y: 2)
         }
         .buttonStyle(.plain)
+        .sheet(isPresented: $showingSheet) {
+            SettingsView()
+        }
     }
 }
 
