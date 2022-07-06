@@ -17,6 +17,7 @@ extension Sequence where Iterator.Element: Hashable {
 
 struct RecordDetail: View {
     @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
+    @ObservedObject var historyModel: HistoryViewModel = HistoryViewModel()
     @State var sortedRep = ""
     @State var sortedReps: [Double] = []
     @FetchRequest var fetchRequest: FetchedResults<Record>
@@ -83,6 +84,7 @@ struct RecordDetail: View {
                         }
                     })
                 }
+                .onDelete(perform: delete)
             } header: {
                 HStack(alignment: .center) {
                     Text("")
@@ -140,6 +142,13 @@ struct RecordDetail: View {
         .onAppear {
             fetchInitial()
             filterReps()
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+            let removedRecord = fetchRequest[index]
+            historyModel.deleteRecord(removedRecord)
         }
     }
     
