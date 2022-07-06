@@ -136,8 +136,6 @@ class AddRecordViewModel: ObservableObject {
         self.weight = Metric(value: record.weight).formattedValue
         self.reps = Metric(value: record.reps).formattedValue
         self.date = record.date!
-        print(self.weight)
-        print(self.reps)
         self.unit = Unit.metric.rawValue == record.unit ? Unit.metric : Unit.imperial
     }
 }

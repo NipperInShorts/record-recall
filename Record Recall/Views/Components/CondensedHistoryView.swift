@@ -23,7 +23,6 @@ class WatchListViewModel: ObservableObject {
         do {
             let result = try viewContext.fetch(fetchRequest)
             watchlist = result
-            print(result)
         } catch {
             print(error.localizedDescription)
         }
@@ -88,7 +87,6 @@ struct CondensedHistoryView: View {
         }
         .onAppear {
             viewModel.getWatchlist()
-            print("APPEARING")
         }
     }
 }
