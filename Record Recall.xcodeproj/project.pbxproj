@@ -28,7 +28,7 @@
 		A59D82A2286366D200093FAA /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D82A1286366D200093FAA /* AppTabView.swift */; };
 		A5A35B612863C61E00C0500F /* ExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */; };
 		A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B622864031600C0500F /* EmptyScreenMessage.swift */; };
-		A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6428640A1000C0500F /* RecordDetail.swift */; };
+		A5A35B6528640A1000C0500F /* ExerciseRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6428640A1000C0500F /* ExerciseRecordList.swift */; };
 		A5A35B6C286CFC0500C0500F /* ViewRouterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */; };
 		A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678532857E5510092317D /* CondensedHistoryView.swift */; };
 		A5A678582857E6280092317D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A678572857E6280092317D /* Modifiers.swift */; };
@@ -67,7 +67,7 @@
 		A59D82A1286366D200093FAA /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryView.swift; sourceTree = "<group>"; };
 		A5A35B622864031600C0500F /* EmptyScreenMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenMessage.swift; sourceTree = "<group>"; };
-		A5A35B6428640A1000C0500F /* RecordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetail.swift; sourceTree = "<group>"; };
+		A5A35B6428640A1000C0500F /* ExerciseRecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecordList.swift; sourceTree = "<group>"; };
 		A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRouterModel.swift; path = "Record Recall/Model/ViewRouterModel.swift"; sourceTree = SOURCE_ROOT; };
 		A5A678532857E5510092317D /* CondensedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondensedHistoryView.swift; sourceTree = "<group>"; };
 		A5A678572857E6280092317D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E6562828591B9300A7AEDB /* AddRecordView.swift */,
-				A5A35B6428640A1000C0500F /* RecordDetail.swift */,
+				A5A35B6428640A1000C0500F /* ExerciseRecordList.swift */,
 				A5957D4E286F508400C51FFC /* RecordLineDetail.swift */,
 			);
 			path = Record;
@@ -323,7 +323,7 @@
 				A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */,
 				A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */,
 				A5121D952859890800D4B2D9 /* SettingsButtonView.swift in Sources */,
-				A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */,
+				A5A35B6528640A1000C0500F /* ExerciseRecordList.swift in Sources */,
 				A5957D552875DDAE00C51FFC /* HistoryViewModel.swift in Sources */,
 				A5AC327528610E0800979E6D /* AddExerciseView.swift in Sources */,
 				A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */,

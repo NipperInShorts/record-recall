@@ -12,16 +12,11 @@ struct ExerciseHistoryView: View {
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
     
-    func filteredRecords(exercise: Exercise) -> [Record] {
+    func filteredRecord(exercise: Exercise) -> Record? {
         let sortedArray = Array(exercise.records as! Set<Record>).sorted {
             $0.date!.timeIntervalSince1970 > $1.date!.timeIntervalSince1970
         }
-        
-        if sortedArray.count > 0 {
-            return [sortedArray[0]]
-        } else {
-            return sortedArray
-        }
+        return sortedArray.first
     }
     
     var body: some View {
@@ -31,42 +26,61 @@ struct ExerciseHistoryView: View {
             } else {
                 List {
                     ForEach(exercises) { exercise in
-                        ForEach(filteredRecords(exercise: exercise), id: \.self) { record in
+                        if exercise.records?.count ?? 0 > 0 {
                             NavigationLink(
                                 tag: exercise.name!,
                                 selection: $tabModel.selectedDetail
                             ) {
-                                RecordDetail(record: record)
+                                ExerciseRecordList(exercise: exercise)
                             } label: {
+                                let exerciseRecord = filteredRecord(exercise: exercise)
                                 VStack(spacing: 16) {
                                     HStack {
                                         Text(exercise.name!)
                                             .font(.title2)
                                             .fontWeight(.medium).foregroundColor(.primaryBlue)
                                         Spacer()
-                                        if record.date != nil { Text(Helper.getFriendlyDateString(from: record.date!))
+                                        if exerciseRecord?.date != nil {
+                                            Text(Helper.getFriendlyDateString(from: exerciseRecord!.date!))
                                                 .font(.footnote)
                                                 .fontWeight(.medium)
                                                 .foregroundColor(.secondaryBlue)
                                         }
                                     }
                                     HStack(alignment: .top, spacing: 24) {
-                                        WeightRepsView(record: record)
-                                        NotesView(record: record)
+                                        if exerciseRecord != nil {
+                                            WeightRepsView(record: exerciseRecord!)
+                                            NotesView(record: exerciseRecord!)
+                                        }
                                     }
                                     .frame(maxWidth: .infinity, maxHeight: 60)
-                                    ExerciseFooter(exercise: exercise.name!)
+                                    if exerciseRecord != nil {
+                                        ExerciseFooter(exercise: exercise.name!)
+                                    }
                                 }
                                 .padding(.top, 8)
                             }
+                        } else {
+                            VStack( alignment: .leading, spacing: 16) {
+                                Text(exercise.name!)
+                                    .font(.title2)
+                                    .fontWeight(.medium).foregroundColor(.primaryBlue)
+                                Spacer()
+                                Text("No records for this exercise yet.")
+                                    .font(.caption)
+                                    .foregroundColor(.primaryBlue)
+                                    .bold()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 80)
                         }
                     }
-                }
-                .listStyle(.insetGrouped)
-                .onAppear {
-                    let appearance = UITableView.appearance()
-                    appearance.backgroundColor = UIColor(Color.backgroundBlue)
-                    appearance.separatorColor = UIColor(Color.secondaryBlue)
+                    .listRowSeparatorTint(.primaryBlue)
+                    .onAppear {
+                        let appearance = UITableView.appearance()
+                        appearance.backgroundColor = UIColor(Color.backgroundBlue)
+                        appearance.separatorColor = UIColor(Color.secondaryBlue)
+                    }
                 }
             }
         }
