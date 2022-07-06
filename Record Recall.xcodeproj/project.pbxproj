@@ -19,6 +19,7 @@
 		A56E8DB32857CA8800205474 /* RecentRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E8DB22857CA8800205474 /* RecentRecords.swift */; };
 		A5957D4F286F508400C51FFC /* RecordLineDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5957D4E286F508400C51FFC /* RecordLineDetail.swift */; };
 		A5957D532874D88700C51FFC /* DateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5957D522874D88700C51FFC /* DateInputView.swift */; };
+		A5957D552875DDAE00C51FFC /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5957D542875DDAE00C51FFC /* HistoryViewModel.swift */; };
 		A59D8298286205E300093FAA /* PopoverViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8297286205E300093FAA /* PopoverViewExt.swift */; };
 		A59D829A286213A000093FAA /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8299286213A000093FAA /* WeightInputView.swift */; };
 		A59D829C2862141500093FAA /* RepsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D829B2862141500093FAA /* RepsInputView.swift */; };
@@ -57,6 +58,7 @@
 		A56E8DB22857CA8800205474 /* RecentRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRecords.swift; sourceTree = "<group>"; };
 		A5957D4E286F508400C51FFC /* RecordLineDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLineDetail.swift; sourceTree = "<group>"; };
 		A5957D522874D88700C51FFC /* DateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputView.swift; sourceTree = "<group>"; };
+		A5957D542875DDAE00C51FFC /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryViewModel.swift; path = "Record Recall/Model/HistoryViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		A59D8297286205E300093FAA /* PopoverViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewExt.swift; sourceTree = "<group>"; };
 		A59D8299286213A000093FAA /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		A59D829B2862141500093FAA /* RepsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputView.swift; sourceTree = "<group>"; };
@@ -125,7 +127,6 @@
 				A59D829B2862141500093FAA /* RepsInputView.swift */,
 				A59D8299286213A000093FAA /* WeightInputView.swift */,
 				A59D82A1286366D200093FAA /* AppTabView.swift */,
-				A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -174,6 +175,7 @@
 			children = (
 				A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */,
 				A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */,
+				A5957D542875DDAE00C51FFC /* HistoryViewModel.swift */,
 				A5A35B622864031600C0500F /* EmptyScreenMessage.swift */,
 			);
 			path = History;
@@ -232,6 +234,7 @@
 				A5AC326E2861006200979E6D /* DataModel.xcdatamodeld */,
 				A5AC3272286100A400979E6D /* StorageProvider.swift */,
 				A5AC3276286114F400979E6D /* AddRecordViewModel.swift */,
+				A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				A5A678542857E5510092317D /* CondensedHistoryView.swift in Sources */,
 				A5121D952859890800D4B2D9 /* SettingsButtonView.swift in Sources */,
 				A5A35B6528640A1000C0500F /* RecordDetail.swift in Sources */,
+				A5957D552875DDAE00C51FFC /* HistoryViewModel.swift in Sources */,
 				A5AC327528610E0800979E6D /* AddExerciseView.swift in Sources */,
 				A59D829E286214AE00093FAA /* PrimaryButton.swift in Sources */,
 				A56E8DAD2857C77100205474 /* ColorExt.swift in Sources */,
