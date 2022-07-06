@@ -124,7 +124,7 @@ struct ExerciseFooter: View {
 }
 
 struct RecordLineItem: View {
-    let record: Record
+    @ObservedObject var record: Record
     let date: Date
     let index: Int
     var body: some View {

@@ -20,7 +20,7 @@ struct RecordDetail: View {
     @State var sortedRep = ""
     @State var sortedReps: [Double] = []
     @FetchRequest var fetchRequest: FetchedResults<Record>
-    var record: Record
+    @ObservedObject var record: Record
     
     var body: some View {
         List {
@@ -83,51 +83,51 @@ struct RecordDetail: View {
                         }
                     })
                 }
-        } header: {
-            HStack(alignment: .center) {
-                Text("")
-                    .font(.headline)
-                    .fontWeight(.medium)
-                    .frame(maxWidth: .infinity)
-                Spacer()
-                Menu {
-                    ForEach(sortedReps, id:\.self) { theRep in
-                        Button {
-                            fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!),
-                                NSPredicate(format: "reps = %@", Metric(value: theRep).formattedValue)
-                            ])
-                            sortedRep = Metric(value: theRep).formattedValue
-                        } label: {
-                            Text("\(Metric(value: theRep).formattedValue) rep(s)")
-                                .textCase(.none)
+            } header: {
+                HStack(alignment: .center) {
+                    Text("")
+                        .font(.headline)
+                        .fontWeight(.medium)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                    Menu {
+                        ForEach(sortedReps, id:\.self) { theRep in
+                            Button {
+                                fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+                                    NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!),
+                                    NSPredicate(format: "reps = %@", Metric(value: theRep).formattedValue)
+                                ])
+                                sortedRep = Metric(value: theRep).formattedValue
+                            } label: {
+                                Text("\(Metric(value: theRep).formattedValue) rep(s)")
+                                    .textCase(.none)
+                            }
                         }
-                    }
-                    Button(role: .destructive) {
-                        fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
-                        ])
-                        sortedRep = ""
+                        Button(role: .destructive) {
+                            fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
+                            ])
+                            sortedRep = ""
+                        } label: {
+                            Text("Clear Filter")
+                                .foregroundColor(.red)
+                        }
+                        
+                        
                     } label: {
-                        Text("Clear Filter")
-                            .foregroundColor(.red)
+                        HStack(spacing: 5) {
+                            Spacer()
+                            Text("Filtered by:")
+                            Text(sortedRep.isEmpty ? "--" : "\(sortedRep) reps")
+                                .bold()
+                                .animation(.interactiveSpring(response: 0.45, dampingFraction: 0.45, blendDuration: 0.25))
+                        }
+                        .font(.caption)
+                        .foregroundColor(.darkBlue)
                     }
-                    
-                    
-                } label: {
-                    HStack(spacing: 5) {
-                        Spacer()
-                        Text("Filtered by:")
-                        Text(sortedRep.isEmpty ? "--" : "\(sortedRep) reps")
-                            .bold()
-                            .animation(.interactiveSpring(response: 0.45, dampingFraction: 0.45, blendDuration: 0.25))
-                    }
-                    .font(.caption)
-                    .foregroundColor(.darkBlue)
                 }
             }
         }
-    }
         .toolbar {
             Button {
                 record.exercise?.watchlist.toggle()
@@ -141,27 +141,27 @@ struct RecordDetail: View {
             fetchInitial()
             filterReps()
         }
-}
-
-func fetchInitial() {
-    fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-        NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
-    ])
-}
-
-func filterReps() {
-    var array: [Double] = []
-    for record in fetchRequest {
-        array.append(record.reps)
     }
-    sortedReps = array.unique().sorted()
-}
-
-
-init(record: Record) {
-    self.record = record
-    _fetchRequest = FetchRequest<Record>(sortDescriptors: [
-        NSSortDescriptor(keyPath: \Record.weight, ascending: false),
-    ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!))
-}
+    
+    func fetchInitial() {
+        fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (self.record.exercise?.name!)!)
+        ])
+    }
+    
+    func filterReps() {
+        var array: [Double] = []
+        for record in fetchRequest {
+            array.append(record.reps)
+        }
+        sortedReps = array.unique().sorted()
+    }
+    
+    
+    init(record: Record) {
+        self.record = record
+        _fetchRequest = FetchRequest<Record>(sortDescriptors: [
+            NSSortDescriptor(keyPath: \Record.weight, ascending: false),
+        ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), (record.exercise?.name!)!))
+    }
 }

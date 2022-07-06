@@ -110,7 +110,7 @@ struct NotesView: View {
 }
 
 struct WeightRepsView: View {
-    var record: Record
+    @ObservedObject var record: Record
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Last Record")
