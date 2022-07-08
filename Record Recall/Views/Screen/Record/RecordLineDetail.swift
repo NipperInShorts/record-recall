@@ -70,6 +70,9 @@ struct RecordLineDetail: View {
             .onAppear {
                 viewModel.initializeView(with: record)
             }
+            .onTapGesture {
+                self.endTextEditing()
+            }
             .padding(.horizontal)
         }
         .navigationTitle("Edit \(record.exercise?.name ?? "") Record")
