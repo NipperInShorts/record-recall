@@ -43,6 +43,7 @@
 		A5D98ECC28763EFE003CBBCF /* UIDeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ECB28763EFE003CBBCF /* UIDeviceExt.swift */; };
 		A5D98ECF28763F72003CBBCF /* BundleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ECE28763F72003CBBCF /* BundleExt.swift */; };
 		A5D98ED128763F90003CBBCF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED028763F90003CBBCF /* MailView.swift */; };
+		A5D98ED328787875003CBBCF /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED228787875003CBBCF /* ViewExt.swift */; };
 		A5E6562928591B9300A7AEDB /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6562828591B9300A7AEDB /* AddRecordView.swift */; };
 		A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */; };
 		A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */; };
@@ -88,6 +89,7 @@
 		A5D98ECB28763EFE003CBBCF /* UIDeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExt.swift; sourceTree = "<group>"; };
 		A5D98ECE28763F72003CBBCF /* BundleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExt.swift; sourceTree = "<group>"; };
 		A5D98ED028763F90003CBBCF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		A5D98ED228787875003CBBCF /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		A5E6562828591B9300A7AEDB /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 		A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				A5D98ECB28763EFE003CBBCF /* UIDeviceExt.swift */,
 				A5A678592857E6690092317D /* TextExt.swift */,
 				A59D8297286205E300093FAA /* PopoverViewExt.swift */,
+				A5D98ED228787875003CBBCF /* ViewExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				A5A6785A2857E6690092317D /* TextExt.swift in Sources */,
 				A5957D532874D88700C51FFC /* DateInputView.swift in Sources */,
 				A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */,
+				A5D98ED328787875003CBBCF /* ViewExt.swift in Sources */,
 				A5D98ECF28763F72003CBBCF /* BundleExt.swift in Sources */,
 				A59D82A2286366D200093FAA /* AppTabView.swift in Sources */,
 				A5A35B632864031600C0500F /* EmptyScreenMessage.swift in Sources */,

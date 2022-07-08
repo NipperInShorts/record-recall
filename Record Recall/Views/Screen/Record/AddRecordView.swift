@@ -108,6 +108,9 @@ struct AddRecordView: View {
                                 .padding(.top, -10)
                         }
                     }
+                    .onTapGesture {
+                        self.endTextEditing()
+                    }
                     .padding(.horizontal)
                 }
                 
