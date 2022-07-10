@@ -65,7 +65,7 @@ struct CondensedHistoryView: View {
             if viewModel.watchlist.count > 0 {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 0) {
                     ForEach(viewModel.watchlist, id:\.self) { exercise in
-                        Section(header: ExerciseHeader(exercise: exercise.name!), footer: ExerciseFooter(exercise: exercise.name!)) {
+                        Section(header: ExerciseHeader(exercise: exercise.name!), footer: ExerciseFooter(exercise: exercise)) {
                             Group {
                                 ExerciseGroupHeader(headerTitle:"weight")
                                 ExerciseGroupHeader(headerTitle:"reps")
@@ -92,20 +92,63 @@ struct CondensedHistoryView: View {
 }
 
 struct ExerciseFooter: View {
-    @EnvironmentObject private var tabModel: ViewRouterModel
-    let exercise: String
+    var exercise: Exercise
+    var body: some View {
+        if #available(iOS 16, *) {
+            NewExerciseFooter(exercise: exercise)
+        } else {
+            OldExerciseFooter(exercise: exercise)
+        }
+    }
+}
+
+struct OldExerciseFooter: View {
+    @EnvironmentObject private var tabModel: OldViewRouterModel
+    let exercise: Exercise
+    
     var body: some View {
         Button {
             tabModel.selectedTab = .history
-            tabModel.selectedDetail = exercise
-            
+            tabModel.selectedDetail = exercise.name!
         } label: {
             Group {
                 Text("View more ")
                     .font(.caption)
                     .foregroundColor(.primaryBlue)
                 +
-                Text(exercise)
+                Text(exercise.name!)
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+                    .bold()
+                +
+                Text(" records")
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.vertical, 8)
+        
+    }
+}
+
+@available(iOS 16, *)
+struct NewExerciseFooter: View {
+    @EnvironmentObject private var tabModel: NewViewRouterModel
+    let exercise: Exercise
+    
+    var body: some View {
+        Button {
+            tabModel.selectedTab = .history
+            tabModel.presentedPath.removeLast()
+            tabModel.addPath(path: exercise)
+        } label: {
+            Group {
+                Text("View more ")
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+                +
+                Text(exercise.name!)
                     .font(.caption)
                     .foregroundColor(.primaryBlue)
                     .bold()

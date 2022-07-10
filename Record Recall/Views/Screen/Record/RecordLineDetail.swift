@@ -70,6 +70,15 @@ struct RecordLineDetail: View {
             .onAppear {
                 viewModel.initializeView(with: record)
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+
+                    Button("Done") {
+                        self.endTextEditing()
+                    }
+                }
+            }
             .onTapGesture {
                 self.endTextEditing()
             }
