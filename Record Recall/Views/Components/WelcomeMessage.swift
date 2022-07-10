@@ -32,6 +32,9 @@ struct WelcomeMessage: View {
 //                .padding()
 //            #endif
         }
+        .onAppear {
+            time = Date()
+        }
     }
 }
 
