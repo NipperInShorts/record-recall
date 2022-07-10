@@ -38,12 +38,12 @@
 		A5AC3273286100A400979E6D /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC3272286100A400979E6D /* StorageProvider.swift */; };
 		A5AC327528610E0800979E6D /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC327428610E0800979E6D /* AddExerciseView.swift */; };
 		A5AC3277286114F400979E6D /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC3276286114F400979E6D /* AddRecordViewModel.swift */; };
-		A5D98EC828763D95003CBBCF /* NavigationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98EC728763D95003CBBCF /* NavigationPicker.swift */; };
 		A5D98ECA28763EBA003CBBCF /* ContactLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98EC928763EBA003CBBCF /* ContactLink.swift */; };
 		A5D98ECC28763EFE003CBBCF /* UIDeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ECB28763EFE003CBBCF /* UIDeviceExt.swift */; };
 		A5D98ECF28763F72003CBBCF /* BundleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ECE28763F72003CBBCF /* BundleExt.swift */; };
 		A5D98ED128763F90003CBBCF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED028763F90003CBBCF /* MailView.swift */; };
 		A5D98ED328787875003CBBCF /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED228787875003CBBCF /* ViewExt.swift */; };
+		A5D98ED528788D1F003CBBCF /* ExerciseRecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */; };
 		A5E6562928591B9300A7AEDB /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6562828591B9300A7AEDB /* AddRecordView.swift */; };
 		A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */; };
 		A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */; };
@@ -84,12 +84,12 @@
 		A5AC3272286100A400979E6D /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		A5AC327428610E0800979E6D /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		A5AC3276286114F400979E6D /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
-		A5D98EC728763D95003CBBCF /* NavigationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPicker.swift; sourceTree = "<group>"; };
 		A5D98EC928763EBA003CBBCF /* ContactLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLink.swift; sourceTree = "<group>"; };
 		A5D98ECB28763EFE003CBBCF /* UIDeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExt.swift; sourceTree = "<group>"; };
 		A5D98ECE28763F72003CBBCF /* BundleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExt.swift; sourceTree = "<group>"; };
 		A5D98ED028763F90003CBBCF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		A5D98ED228787875003CBBCF /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
+		A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecordCellView.swift; sourceTree = "<group>"; };
 		A5E6562828591B9300A7AEDB /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 		A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -131,7 +131,6 @@
 				A56E8DB22857CA8800205474 /* RecentRecords.swift */,
 				A56E8DB02857CA1000205474 /* WelcomeMessage.swift */,
 				A59D829D286214AE00093FAA /* PrimaryButton.swift */,
-				A5D98EC728763D95003CBBCF /* NavigationPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 				A56E8D9E2857C64B00205474 /* Record_RecallApp.swift */,
 				A56E8DA02857C64B00205474 /* ContentView.swift */,
 				A5A6785B2857E6760092317D /* Helpers */,
+				A5D98ED6287890B4003CBBCF /* Navigation */,
 				A5632ACE285916BA00071615 /* Views */,
 				A56E8DA22857C64C00205474 /* Assets.xcassets */,
 				A56E8DA42857C64C00205474 /* Preview Content */,
@@ -195,6 +195,7 @@
 				A5A35B602863C61E00C0500F /* ExerciseHistoryView.swift */,
 				A5957D542875DDAE00C51FFC /* HistoryViewModel.swift */,
 				A5A35B622864031600C0500F /* EmptyScreenMessage.swift */,
+				A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -276,6 +277,13 @@
 			path = Representables;
 			sourceTree = "<group>";
 		};
+		A5D98ED6287890B4003CBBCF /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A59D8298286205E300093FAA /* PopoverViewExt.swift in Sources */,
+				A5D98ED528788D1F003CBBCF /* ExerciseRecordCellView.swift in Sources */,
 				A5121D97285989AE00D4B2D9 /* AddRecordButton.swift in Sources */,
 				A5E847A6285B72DA00E3F0F2 /* FullHistoryView.swift in Sources */,
 				A59D829C2862141500093FAA /* RepsInputView.swift in Sources */,
@@ -369,7 +378,6 @@
 				A56E8DAD2857C77100205474 /* ColorExt.swift in Sources */,
 				A59D82A028623FA200093FAA /* CustomAlertView.swift in Sources */,
 				A5A678582857E6280092317D /* Modifiers.swift in Sources */,
-				A5D98EC828763D95003CBBCF /* NavigationPicker.swift in Sources */,
 				A5D98ED128763F90003CBBCF /* MailView.swift in Sources */,
 				A5957D5828761A4900C51FFC /* SettingsView.swift in Sources */,
 				A5957D4F286F508400C51FFC /* RecordLineDetail.swift in Sources */,

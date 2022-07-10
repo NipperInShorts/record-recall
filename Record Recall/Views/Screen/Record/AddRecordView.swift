@@ -26,8 +26,7 @@ struct AddRecordView: View {
     @State private var errorMessage = ""
     
     var body: some View {
-        NavigationPicker {
-            VStack(alignment: .leading) {
+            let addRecord = VStack(alignment: .leading) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text(viewModel.exercise != nil ? "New \(viewModel.exercise?.name ?? "") Record" : "New Record")
@@ -113,14 +112,29 @@ struct AddRecordView: View {
                     }
                     .padding(.horizontal)
                 }
-                
-                
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+
+                        Button("Done") {
+                            self.endTextEditing()
+                        }
+                    }
+                }
             }
             .navigationTitle("Add Record")
             .navigationBarTitleDisplayMode(.inline)
             .background(Color.backgroundBlue)
+        if #available(iOS 16, *) {
+            NavigationStack {
+                addRecord
+            }
+        } else {
+                NavigationView {
+                    addRecord
+                }
+            }
         }
-    }
     
     private func saveRecord() -> Void {
         do {

@@ -17,8 +17,7 @@ struct SettingsView: View {
         messageHeader: "Please describe your issue below")
     
     var body: some View {
-        NavigationPicker {
-            Form {
+             let settingsView = Form {
                 Text("Manage Exercises")
                 Text("Set default unit")
                 Text("Something about Feedback")
@@ -63,6 +62,15 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+        
+        if #available(iOS 16, *) {
+            NavigationStack {
+                settingsView
+            }
+        } else {
+            NavigationView {
+                settingsView
+            }
         }
     }
 }

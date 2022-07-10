@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct ExerciseHistoryView: View {
-    @EnvironmentObject private var tabModel: ViewRouterModel
+    @EnvironmentObject private var tabModel: OldViewRouterModel
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
-    
-    func filteredRecord(exercise: Exercise) -> Record? {
-        let sortedArray = Array(exercise.records as! Set<Record>).sorted {
-            $0.date!.timeIntervalSince1970 > $1.date!.timeIntervalSince1970
-        }
-        return sortedArray.first
-    }
     
     var body: some View {
         VStack {
@@ -27,38 +20,19 @@ struct ExerciseHistoryView: View {
                 List {
                     ForEach(exercises) { exercise in
                         if exercise.records?.count ?? 0 > 0 {
-                            NavigationLink(
-                                tag: exercise.name!,
-                                selection: $tabModel.selectedDetail
-                            ) {
-                                ExerciseRecordList(exercise: exercise)
-                            } label: {
-                                let exerciseRecord = filteredRecord(exercise: exercise)
-                                VStack(spacing: 16) {
-                                    HStack {
-                                        Text(exercise.name!)
-                                            .font(.title2)
-                                            .fontWeight(.medium).foregroundColor(.primaryBlue)
-                                        Spacer()
-                                        if exerciseRecord?.date != nil {
-                                            Text(Helper.getFriendlyDateString(from: exerciseRecord!.date!))
-                                                .font(.footnote)
-                                                .fontWeight(.medium)
-                                                .foregroundColor(.secondaryBlue)
-                                        }
-                                    }
-                                    HStack(alignment: .top, spacing: 24) {
-                                        if exerciseRecord != nil {
-                                            WeightRepsView(record: exerciseRecord!)
-                                            NotesView(record: exerciseRecord!)
-                                        }
-                                    }
-                                    .frame(maxWidth: .infinity, maxHeight: 60)
-                                    if exerciseRecord != nil {
-                                        ExerciseFooter(exercise: exercise.name!)
-                                    }
+                            if #available(iOS 16, *) {
+                                NavigationLink(value: exercise, label: {
+                                    ExerciseRecordCellView(exercise: exercise)
+                                })
+                                .navigationDestination(for: Exercise.self) { exerciseItem in
+                                    ExerciseRecordList(exercise: exerciseItem)
                                 }
-                                .padding(.top, 8)
+                            } else  {
+                                NavigationLink(tag: exercise.name!, selection: $tabModel.selectedDetail) {
+                                    ExerciseRecordList(exercise: exercise)
+                                } label: {
+                                    ExerciseRecordCellView(exercise: exercise)
+                                }
                             }
                         } else {
                             VStack( alignment: .leading, spacing: 16) {
@@ -169,4 +143,5 @@ struct WeightRepsView: View {
         }
     }
 }
+
 

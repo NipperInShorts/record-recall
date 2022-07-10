@@ -7,17 +7,23 @@
 
 import SwiftUI
 
-struct FullHistoryView: View {
-
+struct OldHistoryView: View {
+    @EnvironmentObject private var tabModel: OldViewRouterModel
     var body: some View {
-        NavigationPicker {
+        NavigationView {
             ExerciseHistoryView()
         }
+        
     }
 }
 
-struct FullHistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        FullHistoryView()
+
+@available(iOS 16, *)
+struct NewHistoryView: View {
+    @EnvironmentObject private var tabModel: NewViewRouterModel
+    var body: some View {
+        NavigationStack(path: $tabModel.presentedPath) {
+            ExerciseHistoryView()
+        }
     }
 }
