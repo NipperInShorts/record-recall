@@ -46,6 +46,8 @@
 		A5D98ED528788D1F003CBBCF /* ExerciseRecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */; };
 		A5D98EDA287B586C003CBBCF /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED9287B586C003CBBCF /* BannerAd.swift */; };
 		A5D98EDD287B5907003CBBCF /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A5D98EDC287B5907003CBBCF /* GoogleMobileAds */; };
+		A5DD24F9287BD0C200D028C1 /* ExerciseManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD24F8287BD0C200D028C1 /* ExerciseManagementView.swift */; };
+		A5DD24FB287BD3A100D028C1 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD24FA287BD3A100D028C1 /* AddExerciseViewModel.swift */; };
 		A5E6562928591B9300A7AEDB /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6562828591B9300A7AEDB /* AddRecordView.swift */; };
 		A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */; };
 		A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */; };
@@ -93,6 +95,8 @@
 		A5D98ED228787875003CBBCF /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecordCellView.swift; sourceTree = "<group>"; };
 		A5D98ED9287B586C003CBBCF /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
+		A5DD24F8287BD0C200D028C1 /* ExerciseManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManagementView.swift; sourceTree = "<group>"; };
+		A5DD24FA287BD3A100D028C1 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		A5E6562828591B9300A7AEDB /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 		A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A5957D5728761A4900C51FFC /* SettingsView.swift */,
+				A5DD24F8287BD0C200D028C1 /* ExerciseManagementView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				A5AC3272286100A400979E6D /* StorageProvider.swift */,
 				A5AC3276286114F400979E6D /* AddRecordViewModel.swift */,
 				A5A35B6B286CFC0500C0500F /* ViewRouterModel.swift */,
+				A5DD24FA287BD3A100D028C1 /* AddExerciseViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +373,8 @@
 			files = (
 				A59D8298286205E300093FAA /* PopoverViewExt.swift in Sources */,
 				A5D98ED528788D1F003CBBCF /* ExerciseRecordCellView.swift in Sources */,
+				A5DD24FB287BD3A100D028C1 /* AddExerciseViewModel.swift in Sources */,
+				A5DD24F9287BD0C200D028C1 /* ExerciseManagementView.swift in Sources */,
 				A5121D97285989AE00D4B2D9 /* AddRecordButton.swift in Sources */,
 				A5E847A6285B72DA00E3F0F2 /* FullHistoryView.swift in Sources */,
 				A59D829C2862141500093FAA /* RepsInputView.swift in Sources */,

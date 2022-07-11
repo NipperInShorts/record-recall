@@ -20,7 +20,7 @@ enum AddExerciseError: Error {
     case failedToSave
 }
 
-// Exercise Selected
+
 class AddRecordViewModel: ObservableObject {
     let storageProvider: StorageProvider = StorageProvider.shared
     @Published var weight = ""

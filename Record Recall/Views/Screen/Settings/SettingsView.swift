@@ -18,10 +18,21 @@ struct SettingsView: View {
     
     var body: some View {
              let settingsView = Form {
-                Text("Manage Exercises")
-                Text("Set default unit")
-                Text("Something about Feedback")
-                Text("Something about Removing Ads")
+                 Section {
+                     NavigationLink("Manage Exercises") {
+                         ExerciseManagementView()
+                     }
+                    Text("Set default unit")
+                 } header: {
+                     Text("Manage Experience")
+                 }
+                 Section {
+                     Text("Something about Removing Ads")
+                 } header: {
+                     Text("Remove those Pesky Ads")
+                 }
+
+                
                 Section {
                     ContactLink(icon: "link", message: "Reach out on Twitter @NipperInShorts", link: "https://www.twitter.com/nipperinshorts")
                     ContactLink(icon: "link", message: "Lift with me on Instagram @NipperInShorts", link: "https://www.instagram.com/nipperinshorts/")
