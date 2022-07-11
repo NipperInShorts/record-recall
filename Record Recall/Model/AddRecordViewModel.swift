@@ -26,7 +26,7 @@ class AddRecordViewModel: ObservableObject {
     @Published var weight = ""
     @Published var notes = ""
     @Published var unit = Unit.metric
-    @Published private(set) var exercise: Exercise?
+    @Published var exercise: Exercise?
     @Published var reps: String = ""
     @Published var exerciseName: String = ""
     @Published private(set) var addExerciseStatus: AddExerciseStatus = .idle
@@ -39,6 +39,20 @@ class AddRecordViewModel: ObservableObject {
         } else {
             self.exercise = nil
         }
+    }
+    
+    func saveExercise() -> Void {
+        if self.exerciseName.isEmpty {
+            addExerciseStatus = .error
+            return
+        }
+        exercise?.name = exerciseName
+        do {
+            try storageProvider.persistentContainer.viewContext.save()
+        } catch {
+            storageProvider.persistentContainer.viewContext.rollback()
+        }
+        addExerciseStatus = .success
     }
     
     func addToWatchlist() -> Void {

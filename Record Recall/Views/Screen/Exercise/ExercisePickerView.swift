@@ -18,25 +18,37 @@ struct ExercisePickerView: View {
             if exercises.isEmpty {
                 EmptyScreenMessage(title: "Glad you're here.", message: "The exercise list is empty.\nYou can add exercises by using the plus button at the top.")
             } else {
-                List(exercises) { exercise in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(exercise.name!)
-                                .foregroundColor(.primaryBlue)
-                            Spacer()
-                            if (viewModel.exercise == exercise) {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.darkBlue)
+                List {
+                    ForEach(exercises) { exercise in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(exercise.name!)
+                                    .foregroundColor(.primaryBlue)
+                                Spacer()
+                                if (viewModel.exercise == exercise) {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.darkBlue)
+                                }
                             }
                         }
-                    }
-                    //hack to make onTap fill full cell of list
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        if viewModel.exercise == exercise {
-                            viewModel.setExercise(exercise: nil)
-                        } else {
-                            viewModel.setExercise(exercise: exercise)
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                viewModel.exercise = exercise
+                                viewModel.exerciseName = exercise.name!
+                                showPopover.toggle()
+                            } label: {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.purple)
+                            }
+                        }
+                        //hack to make onTap fill full cell of list
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if viewModel.exercise == exercise {
+                                viewModel.setExercise(exercise: nil)
+                            } else {
+                                viewModel.setExercise(exercise: exercise)
+                            }
                         }
                     }
                 }
@@ -48,18 +60,7 @@ struct ExercisePickerView: View {
         }
         .background(Color.backgroundBlue)
         .navigationTitle("Exercises")
-        .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            leading:
-                Button {
-                    dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 14, weight: .semibold))
-                        Text("Back")
-                    }
-                },
             trailing:
                 Button  {
                     showPopover.toggle()

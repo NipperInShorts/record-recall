@@ -31,14 +31,19 @@ struct AddExerciseView: View {
                 .onAppear {
                     nameIsFocused = true
                 }
+           
             Button {
-                viewModel.addExercise()
+                if viewModel.exercise != nil {
+                    viewModel.saveExercise()
+                } else {
+                    viewModel.addExercise()
+                }
                 if viewModel.addExerciseStatus == .success {
-                    showing = false
                     viewModel.startAddMachineOver()
+                    showing = false
                 }
             } label: {
-                PrimaryButton(text: "Add Exercise")
+                PrimaryButton(text: viewModel.exercise != nil ? "Update Exercise" : "Add Exercise")
             }
         
             Text(viewModel.addExerciseStatus == .error ? "The exercise cannot be blank" : "")
