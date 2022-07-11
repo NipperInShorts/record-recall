@@ -24,7 +24,8 @@ struct HomeScreenView: View {
                     .padding([.bottom, .horizontal])
                     // Data model to send recent records or some other UI if recent records is empty
                     RecentRecords()
-                    
+                    BannerAd(unitID: "ca-app-pub-8096207827009586/4798997896")
+                        .padding(.top, 8)
                     // History
                     CondensedHistoryView()
                 }

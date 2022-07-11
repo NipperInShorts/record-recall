@@ -44,6 +44,8 @@
 		A5D98ED128763F90003CBBCF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED028763F90003CBBCF /* MailView.swift */; };
 		A5D98ED328787875003CBBCF /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED228787875003CBBCF /* ViewExt.swift */; };
 		A5D98ED528788D1F003CBBCF /* ExerciseRecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */; };
+		A5D98EDA287B586C003CBBCF /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D98ED9287B586C003CBBCF /* BannerAd.swift */; };
+		A5D98EDD287B5907003CBBCF /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A5D98EDC287B5907003CBBCF /* GoogleMobileAds */; };
 		A5E6562928591B9300A7AEDB /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6562828591B9300A7AEDB /* AddRecordView.swift */; };
 		A5E8479F285A77A400E3F0F2 /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */; };
 		A5E847A1285A7AD300E3F0F2 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */; };
@@ -90,6 +92,7 @@
 		A5D98ED028763F90003CBBCF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		A5D98ED228787875003CBBCF /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		A5D98ED428788D1F003CBBCF /* ExerciseRecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRecordCellView.swift; sourceTree = "<group>"; };
+		A5D98ED9287B586C003CBBCF /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		A5E6562828591B9300A7AEDB /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 		A5E8479E285A77A400E3F0F2 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		A5E847A0285A7AD300E3F0F2 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D98EDD287B5907003CBBCF /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +117,7 @@
 				A5D98ECD28763F46003CBBCF /* Representables */,
 				A5632AD0285916C600071615 /* Screen */,
 				A5632ACF285916BE00071615 /* Components */,
+				A5D98ED9287B586C003CBBCF /* BannerAd.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,6 +305,9 @@
 			dependencies = (
 			);
 			name = "Record Recall";
+			packageProductDependencies = (
+				A5D98EDC287B5907003CBBCF /* GoogleMobileAds */,
+			);
 			productName = "Record Recall";
 			productReference = A56E8D9B2857C64B00205474 /* Record Recall.app */;
 			productType = "com.apple.product-type.application";
@@ -328,6 +336,9 @@
 				Base,
 			);
 			mainGroup = A56E8D922857C64B00205474;
+			packageReferences = (
+				A5D98EDB287B5906003CBBCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = A56E8D9C2857C64B00205474 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -390,6 +401,7 @@
 				A5A35B612863C61E00C0500F /* ExerciseHistoryView.swift in Sources */,
 				A5AC3273286100A400979E6D /* StorageProvider.swift in Sources */,
 				A59D829A286213A000093FAA /* WeightInputView.swift in Sources */,
+				A5D98EDA287B586C003CBBCF /* BannerAd.swift in Sources */,
 				A56E8DB12857CA1000205474 /* WelcomeMessage.swift in Sources */,
 				A5AC32702861006200979E6D /* DataModel.xcdatamodeld in Sources */,
 				A56E8DAF2857C98000205474 /* Utils.swift in Sources */,
@@ -453,6 +465,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -506,6 +519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -526,6 +540,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Record-Recall-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Record Recall";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,6 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nipper.RecordRecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -561,6 +578,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Record-Recall-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Record Recall";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +593,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nipper.RecordRecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -605,6 +625,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5D98EDB287B5906003CBBCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5D98EDC287B5907003CBBCF /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5D98EDB287B5906003CBBCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A5AC326E2861006200979E6D /* DataModel.xcdatamodeld */ = {
