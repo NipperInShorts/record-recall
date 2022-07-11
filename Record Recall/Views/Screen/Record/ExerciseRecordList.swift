@@ -25,6 +25,17 @@ struct ExerciseRecordList: View {
     @State var sortedReps: [Double] = []
     @FetchRequest var fetchRequest: FetchedResults<Record>
     @ObservedObject var exercise: Exercise
+    @Environment(\.dismiss) var dismiss
+    
+    func dismissIfDeleted(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let deletedObjects = userInfo[NSManagedObjectContext.NotificationKey.deletedObjects.rawValue] as? Set<NSManagedObject> {
+                if deletedObjects.contains(where: {$0.objectID == exercise.objectID}) {
+                    dismiss()
+                }
+            }
+        }
+    }
     
     var body: some View {
         List {
@@ -86,6 +97,7 @@ struct ExerciseRecordList: View {
                             
                         }
                     })
+                    .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.storageProvider.persistentContainer.viewContext), perform: dismissIfDeleted)
                 }
                 .onDelete(perform: delete)
             } header: {
@@ -141,7 +153,7 @@ struct ExerciseRecordList: View {
                 Image(systemName: exercise.watchlist ? "bookmark.fill" : "bookmark")
             }
         }
-        .navigationTitle(exercise.name!)
+        .navigationTitle(exercise.name ?? "")
         .onAppear {
             fetchInitial()
             filterReps()
@@ -157,7 +169,7 @@ struct ExerciseRecordList: View {
     
     func fetchInitial() {
         fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!)
+            NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name ?? "")
         ])
     }
     
@@ -174,6 +186,6 @@ struct ExerciseRecordList: View {
         self.exercise = exercise
         _fetchRequest = FetchRequest<Record>(sortDescriptors: [
             NSSortDescriptor(keyPath: \Record.weight, ascending: false),
-        ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), exercise.name!))
+        ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), exercise.name ?? ""))
     }
 }

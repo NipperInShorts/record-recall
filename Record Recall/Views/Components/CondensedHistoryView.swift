@@ -148,7 +148,7 @@ struct NewExerciseFooter: View {
                     .font(.caption)
                     .foregroundColor(.primaryBlue)
                 +
-                Text(exercise.name!)
+                Text(exercise.name ?? "")
                     .font(.caption)
                     .foregroundColor(.primaryBlue)
                     .bold()
