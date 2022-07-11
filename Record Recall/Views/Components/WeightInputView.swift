@@ -18,7 +18,7 @@ struct WeightInputView: View {
                 .bold()
                 .foregroundColor(.primaryBlue)
             HStack {
-                TextField(viewModel.unit == .metric ? "Kilos" : "Pounds", text: $internalWeight)
+                TextField(viewModel.unit == Unit.metric.rawValue ? "Kilos" : "Pounds", text: $internalWeight)
                     .onReceive(Just(internalWeight), perform: { newValue in
                         internalWeight = Helper.weightValidator(newValue: newValue, weight: self.internalWeight)
                     })
@@ -31,28 +31,16 @@ struct WeightInputView: View {
                     .keyboardType(.decimalPad)
                     .padding()
                     .foregroundColor(.primaryBlue)
-                
-                VStack(spacing: 8) {
-                    Button {
-                        viewModel.unit = .metric
-                    } label: {
-                        Text("KG")
-                            .fontWeight(viewModel.unit == .metric ? .bold : .regular)
-                            .foregroundColor(viewModel.unit == .metric ? .primaryBlue : .secondaryBlue)
-                            .padding(.horizontal)
+
+                Text(viewModel.unit == Unit.imperial.rawValue ? "LB" : "KG")
+                    .fontWeight(.bold)
+                    .foregroundColor(.primaryBlue)
+                    .padding(.horizontal)
+                    .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { theChange in
+                        viewModel.unit = UserDefaults.standard.string(forKey: "userUnit")!
                     }
-                    
-                    Button {
-                        viewModel.unit = .imperial
-                    } label: {
-                        Text("LB")
-                            .fontWeight(viewModel.unit == .imperial ? .bold : .regular)
-                            .foregroundColor(viewModel.unit == .imperial ? .primaryBlue : .secondaryBlue)
-                            .padding(.horizontal, 9)
-                        
-                    }
-                }
             }
+  
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.secondaryBlue, lineWidth: 1)

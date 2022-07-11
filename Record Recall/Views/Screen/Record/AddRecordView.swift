@@ -8,16 +8,10 @@
 import SwiftUI
 import Combine
 
-struct LiftData: Identifiable {
-    let id = UUID()
-    let name: String
-}
-
 enum Unit: String {
     case metric = "metric"
     case imperial = "imperial"
 }
-
 
 struct AddRecordView: View {
     
