@@ -27,16 +27,6 @@ struct ExerciseRecordList: View {
     @ObservedObject var exercise: Exercise
     @Environment(\.dismiss) var dismiss
     
-    func dismissIfDeleted(_ notification: Notification) {
-        if let userInfo = notification.userInfo {
-            if let deletedObjects = userInfo[NSManagedObjectContext.NotificationKey.deletedObjects.rawValue] as? Set<NSManagedObject> {
-                if deletedObjects.contains(where: {$0.objectID == exercise.objectID}) {
-                    dismiss()
-                }
-            }
-        }
-    }
-    
     var body: some View {
         List {
             Section {
@@ -97,7 +87,13 @@ struct ExerciseRecordList: View {
                             
                         }
                     })
-                    .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.storageProvider.persistentContainer.viewContext), perform: dismissIfDeleted)
+                    .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.storageProvider.persistentContainer.viewContext)) { output in
+                        viewModel.storageProvider.dismissIfDeleted(output, object: exercise) {
+                            dismiss()
+                        } onFailure: {
+                            // do nothing
+                        }
+                    }
                 }
                 .onDelete(perform: delete)
             } header: {

@@ -36,6 +36,18 @@ extension StorageProvider {
             StorageProvider.shared.persistentContainer.viewContext.rollback()
         }
     }
+    
+    func dismissIfDeleted(_ notification: Notification, object: NSManagedObject, completion: ()-> Void, onFailure: ()-> Void) {
+        if let userInfo = notification.userInfo {
+            if let deletedObjects = userInfo[NSManagedObjectContext.NotificationKey.deletedObjects.rawValue] as? Set<NSManagedObject> {
+                if deletedObjects.contains(where: {$0.objectID == object.objectID}) {
+                    completion()
+                }
+            }
+        } else {
+            onFailure()
+        }
+    }
 }
 
 public extension Exercise {

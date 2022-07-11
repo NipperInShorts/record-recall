@@ -10,7 +10,7 @@ import CoreData
 
 class WatchListViewModel: ObservableObject {
     @Published var watchlist: [Exercise] = []
-    
+    let storageProvider: StorageProvider = StorageProvider.shared
     let viewContext = StorageProvider.shared.persistentContainer.viewContext
     
     func getWatchlist() {
@@ -74,6 +74,13 @@ struct CondensedHistoryView: View {
                             
                             ForEach(Array(filteredRecords(exercise: exercise).enumerated()), id: \.element) { index, individualRecord in
                                 RecordLineItem(record: individualRecord, date: individualRecord.date!, index: index)
+                            }
+                        }
+                        .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.viewContext)) { output in
+                            viewModel.storageProvider.dismissIfDeleted(output, object: exercise) {
+                                viewModel.getWatchlist()
+                            } onFailure: {
+                                // do nothing
                             }
                         }
                     }
@@ -140,7 +147,9 @@ struct NewExerciseFooter: View {
     var body: some View {
         Button {
             tabModel.selectedTab = .history
-            tabModel.presentedPath.removeLast()
+            if !tabModel.presentedPath.isEmpty {
+                tabModel.presentedPath.removeLast()
+            }
             tabModel.addPath(path: exercise)
         } label: {
             Group {
