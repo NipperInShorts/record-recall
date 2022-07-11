@@ -68,7 +68,7 @@ struct AddSettingsExerciseView: View {
                     .font(.callout)
                     .foregroundColor(.secondaryBlue)
             }
-
+            
             TextField("Add Exercise", text: $viewModel.exerciseName)
                 .focused($nameIsFocused)
                 .padding(.vertical)
@@ -76,15 +76,19 @@ struct AddSettingsExerciseView: View {
                     nameIsFocused = true
                 }
             Button {
-                viewModel.addExercise()
+                if viewModel.exercise != nil {
+                    viewModel.saveExercise()
+                } else {
+                    viewModel.addExercise()
+                }
                 if viewModel.addExerciseStatus == .success {
-                    showing = false
                     viewModel.startAddMachineOver()
+                    showing = false
                 }
             } label: {
-                PrimaryButton(text: "Add Exercise")
+                PrimaryButton(text: viewModel.exercise != nil ? "Update Exercise" : "Add Exercise")
             }
-        
+            
             Text(viewModel.addExerciseStatus == .error ? "The exercise cannot be blank" : "")
                 .foregroundColor(.red)
                 .font(.system(size: 12, weight: .semibold))

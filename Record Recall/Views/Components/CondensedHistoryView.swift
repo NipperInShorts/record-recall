@@ -77,6 +77,7 @@ struct CondensedHistoryView: View {
                             }
                         }
                         .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.viewContext)) { output in
+                            viewModel.getWatchlist()
                             viewModel.storageProvider.dismissIfDeleted(output, object: exercise) {
                                 viewModel.getWatchlist()
                             } onFailure: {
