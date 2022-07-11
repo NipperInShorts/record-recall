@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseRecordCellView: View {
-    var exercise: Exercise
+    @ObservedObject var exercise: Exercise
     
     func filteredRecord(exercise: Exercise) -> Record? {
         let sortedArray = Array(exercise.records as! Set<Record>).sorted {

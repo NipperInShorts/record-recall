@@ -13,6 +13,7 @@ struct ExerciseManagementView: View {
     @Environment(\.dismiss) var dismiss
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
+    
     var body: some View {
         VStack {
             if exercises.isEmpty {
@@ -25,6 +26,15 @@ struct ExerciseManagementView: View {
                                 HStack {
                                     Text(exercise.name!)
                                         .foregroundColor(.primaryBlue)
+                                    Spacer()
+                                    Button {
+                                        viewModel.exercise = exercise
+                                        viewModel.exerciseName = exercise.name!
+                                        showPopover.toggle()
+                                    } label: {
+                                        Image(systemName: "pencil")
+                                            .foregroundColor(.purple)
+                                    }
                                 }
                             }
                             .swipeActions(edge: .trailing) {

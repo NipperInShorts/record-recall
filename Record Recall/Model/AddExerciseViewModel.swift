@@ -12,6 +12,7 @@ class AddExerciseViewModel: ObservableObject {
     @Published var exerciseName: String = ""
     @Published private(set) var addExerciseStatus: AddExerciseStatus = .idle
     @Published var addError: AddExerciseError?
+    @Published var exercise: Exercise?
     
     func startAddMachineOver() -> Void {
         addExerciseStatus = .idle
@@ -25,6 +26,20 @@ class AddExerciseViewModel: ObservableObject {
         // Save exercise
         storageProvider.saveExercise(named: self.exerciseName)
         exerciseName = ""
+        addExerciseStatus = .success
+    }
+    
+    func saveExercise() -> Void {
+        if self.exerciseName.isEmpty {
+            addExerciseStatus = .error
+            return
+        }
+        exercise?.name = exerciseName
+        do {
+            try storageProvider.persistentContainer.viewContext.save()
+        } catch {
+            storageProvider.persistentContainer.viewContext.rollback()
+        }
         addExerciseStatus = .success
     }
     
