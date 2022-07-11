@@ -36,7 +36,7 @@ struct WeightInputView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.primaryBlue)
                     .padding(.horizontal)
-                    .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { theChange in
+                    .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
                         viewModel.unit = UserDefaults.standard.string(forKey: "userUnit")!
                     }
             }

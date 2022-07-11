@@ -14,6 +14,12 @@ class Helper {
         return dateFormatter.string(from: date)
     }
     
+    static func getFriendlyDateStringWithYear(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMdEEEyy")
+        return dateFormatter.string(from: date)
+    }
+    
     static func getGreeting(from currentHour: Int? = nil) -> String {
         let hour = currentHour ?? Calendar.current.component(.hour, from: .now)
         // Morning 4 - 11:59

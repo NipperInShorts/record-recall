@@ -40,7 +40,7 @@ struct CondensedHistoryView: View {
     
     func filteredRecords(exercise: Exercise) -> [Record] {
         let sortedArray = Array(exercise.records as! Set<Record>).sorted {
-            $0.date!.timeIntervalSince1970 > $1.date!.timeIntervalSince1970
+            $0.weight > $1.weight
         }
         
         if sortedArray.count > 0 {
@@ -192,7 +192,7 @@ struct RecordLineItem: View {
             Text("\(record.reps, specifier: "%.0f")")
                 .foregroundColor(.primaryBlue)
                 .bold()
-            Text("\(Helper.getFriendlyDateString(from: date))")
+            Text("\(Helper.getFriendlyDateStringWithYear(from: date))")
                 .foregroundColor(.secondaryBlue)
                 .font(.caption)
                 .fontWeight(.medium)
