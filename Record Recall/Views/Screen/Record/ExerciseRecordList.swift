@@ -141,7 +141,7 @@ struct ExerciseRecordList: View {
                 Image(systemName: exercise.watchlist ? "bookmark.fill" : "bookmark")
             }
         }
-        .navigationTitle(exercise.name!)
+        .navigationTitle(exercise.name ?? "")
         .onAppear {
             fetchInitial()
             filterReps()

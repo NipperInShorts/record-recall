@@ -10,6 +10,7 @@ import SwiftUI
 struct ExerciseManagementView: View {
     @StateObject var viewModel = AddExerciseViewModel()
     @State private var showPopover = false
+    @State private var isShowingDeleteAction = false
     @Environment(\.dismiss) var dismiss
     @FetchRequest(fetchRequest: Exercise.allExercises)
     var exercises: FetchedResults<Exercise>
@@ -26,8 +27,31 @@ struct ExerciseManagementView: View {
                                     .foregroundColor(.primaryBlue)
                             }
                         }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                isShowingDeleteAction = true
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .confirmationDialog("Deleting Exercise Removes Records", isPresented: $isShowingDeleteAction) {
+                            Button(role: .destructive) {
+                                delete(exercise: exercise)
+                                isShowingDeleteAction = false
+                            } label: {
+                                Text("Delete")
+                            }
+                            Button(role: .cancel) {
+                                //handle delete
+                                isShowingDeleteAction = false
+                            } label: {
+                                Text("Cancel")
+                            }
+                        } message: {
+                            Text("Deleting the exercises removes associated records")
+                        }
                     }
-                    .onDelete(perform: delete)
+                    
                 }
             }
         }
@@ -62,11 +86,8 @@ struct ExerciseManagementView: View {
         }
     }
     
-    func delete(at offsets: IndexSet) {
-        for index in offsets {
-            let removedExercise = exercises[index]
-            viewModel.deleteExercise(removedExercise)
-        }
+    func delete(exercise: Exercise) {
+        viewModel.deleteExercise(exercise)
     }
 }
 
