@@ -55,7 +55,7 @@ struct CondensedHistoryView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Watch list")
+                Text("Watchlist")
                     .font(.title3)
                     .fontWeight(.medium)
                     .foregroundColor(.darkBlue)
@@ -86,8 +86,8 @@ struct CondensedHistoryView: View {
                     }
                 }
             } else {
-                EmptyScreenMessage(title: "Nothing on your Watch list",
-                                   message: "Hit the Bookmark icon on the exercise detail screen to add to your Watch list"
+                EmptyScreenMessage(title: "Nothing on your Watchlist",
+                                   message: "Hit the Bookmark icon on the exercise detail screen to add to your Watchlist"
                 )
                 .padding(.top, 30)
             }
