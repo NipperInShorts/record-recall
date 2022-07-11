@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 extension Sequence where Iterator.Element: Hashable {
     func unique() -> [Iterator.Element] {
@@ -14,6 +15,8 @@ extension Sequence where Iterator.Element: Hashable {
         return filter { seen.insert($0).inserted }
     }
 }
+
+
 
 struct ExerciseRecordList: View {
     @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
