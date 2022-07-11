@@ -25,7 +25,7 @@ class AddRecordViewModel: ObservableObject {
     let storageProvider: StorageProvider = StorageProvider.shared
     @Published var weight = ""
     @Published var notes = ""
-    @Published var unit = Unit.metric
+    @Published var unit: Unit.RawValue = UserDefaults.standard.string(forKey: "userUnit") ?? Unit.imperial.rawValue
     @Published var exercise: Exercise?
     @Published var reps: String = ""
     @Published var exerciseName: String = ""
@@ -83,7 +83,7 @@ class AddRecordViewModel: ObservableObject {
         record.weight = Double(self.weight) ?? 0
         record.reps = Double(self.reps) ?? 0
         record.notes = self.notes
-        record.unit = self.unit.rawValue
+        record.unit = self.unit
         record.date = self.date
         self.exercise?.addToRecords(record)
         do {
@@ -127,7 +127,7 @@ class AddRecordViewModel: ObservableObject {
         record.weight = Double(self.weight) ?? 0
         record.reps = Double(self.reps) ?? 0
         record.notes = self.notes
-        record.unit = self.unit.rawValue
+        record.unit = self.unit
         record.date = self.date
         do {
             try storageProvider.persistentContainer.viewContext.save()
@@ -138,7 +138,7 @@ class AddRecordViewModel: ObservableObject {
     
     private func resetInputs() {
         self.notes = ""
-        self.unit = Unit.metric
+        self.unit = UserDefaults.standard.string(forKey: "userUnit") ?? Unit.imperial.rawValue
         self.weight = ""
         self.reps = ""
         self.exercise = nil
@@ -150,6 +150,6 @@ class AddRecordViewModel: ObservableObject {
         self.weight = Metric(value: record.weight).formattedValue
         self.reps = Metric(value: record.reps).formattedValue
         self.date = record.date!
-        self.unit = Unit.metric.rawValue == record.unit ? Unit.metric : Unit.imperial
+        self.unit = Unit.metric.rawValue == record.unit ? Unit.metric.rawValue : Unit.imperial.rawValue
     }
 }

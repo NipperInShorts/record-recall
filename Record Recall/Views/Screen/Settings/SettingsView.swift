@@ -16,53 +16,57 @@ struct SettingsView: View {
         subject: "Support Email",
         messageHeader: "Please describe your issue below")
     
+    @AppStorage("userUnit") private var userUnit = Unit.imperial.rawValue
+    
     var body: some View {
-             let settingsView = Form {
-                 Section {
-                     NavigationLink("Manage Exercises") {
-                         ExerciseManagementView()
-                     }
-                    Text("Set default unit")
-                 } header: {
-                     Text("Manage Experience")
-                 }
-                 Section {
-                     Text("Something about Removing Ads")
-                 } header: {
-                     Text("Remove those Pesky Ads")
-                 }
-
-                
-                Section {
-                    ContactLink(icon: "link", message: "Reach out on Twitter @NipperInShorts", link: "https://www.twitter.com/nipperinshorts")
-                    ContactLink(icon: "link", message: "Lift with me on Instagram @NipperInShorts", link: "https://www.instagram.com/nipperinshorts/")
-                    Button(action: {
-                        showEmail.toggle()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "paperplane")
-                            Text("Email some feedback")
-                        }
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.75)
-                        .font(.system(size: 14, weight: .semibold))
-                    })
-                } header: {
-                    Text("Contact Me")
-                } footer: {
-                    Text("Use any of the above links for feedback, comments, questions, or to keep in touch about new updates or releases.")
+        let settingsView = Form {
+            Section {
+                NavigationLink("Manage Exercises") {
+                    ExerciseManagementView()
                 }
-                .sheet(isPresented: $showEmail) {
-                    MailView(supportEmail: $email) { result in
-                        switch result {
-                        case .success:
-                            break
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                        }
+                HStack {
+                    Text("Mass unit: ")
+                    Picker("Mass", selection: $userUnit) {
+                        Text("KG").tag(Unit.metric.rawValue)
+                        Text("LB").tag(Unit.imperial.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+            } header: {
+                Text("Manage Experience")
+            }
+            
+            
+            Section {
+                ContactLink(icon: "link", message: "Reach out on Twitter @NipperInShorts", link: "https://www.twitter.com/nipperinshorts")
+                ContactLink(icon: "link", message: "Lift with me on Instagram @NipperInShorts", link: "https://www.instagram.com/nipperinshorts/")
+                Button(action: {
+                    showEmail.toggle()
+                }, label: {
+                    HStack {
+                        Image(systemName: "paperplane")
+                        Text("Email some feedback")
+                    }
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+                    .font(.system(size: 14, weight: .semibold))
+                })
+            } header: {
+                Text("Contact Me")
+            } footer: {
+                Text("Use any of the above links for feedback, comments, questions, or to keep in touch about new updates or releases.")
+            }
+            .sheet(isPresented: $showEmail) {
+                MailView(supportEmail: $email) { result in
+                    switch result {
+                    case .success:
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
                 }
             }
+        }
             .toolbar {
                 ToolbarItem {
                     Button {
