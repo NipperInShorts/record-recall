@@ -20,20 +20,20 @@ struct ExerciseHistoryView: View {
                 List {
                     ForEach(exercises) { exercise in
                         if exercise.records?.count ?? 0 > 0 {
-                            if #available(iOS 16, *) {
-                                NavigationLink(value: exercise, label: {
-                                    ExerciseRecordCellView(exercise: exercise)
-                                })
-                                .navigationDestination(for: Exercise.self) { exerciseItem in
-                                    ExerciseRecordList(exercise: exerciseItem)
-                                }
-                            } else  {
+//                            if #available(iOS 16, *) {
+//                                NavigationLink(value: exercise, label: {
+//                                    ExerciseRecordCellView(exercise: exercise)
+//                                })
+//                                .navigationDestination(for: Exercise.self) { exerciseItem in
+//                                    ExerciseRecordList(exercise: exerciseItem)
+//                                }
+//                            } else  {
                                 NavigationLink(tag: exercise.name!, selection: $tabModel.selectedDetail) {
                                     ExerciseRecordList(exercise: exercise)
                                 } label: {
                                     ExerciseRecordCellView(exercise: exercise)
                                 }
-                            }
+//                            }
                         } else {
                             VStack( alignment: .leading, spacing: 16) {
                                 Text(exercise.name!)

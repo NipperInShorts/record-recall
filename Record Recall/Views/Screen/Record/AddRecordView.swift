@@ -139,9 +139,9 @@ struct AddRecordView: View {
             .navigationBarTitleDisplayMode(.inline)
             .background(Color.backgroundBlue)
         if #available(iOS 16, *) {
-            NavigationStack {
-                addRecord
-            }
+//            NavigationStack {
+//                addRecord
+//            }
         } else {
                 NavigationView {
                     addRecord

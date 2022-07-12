@@ -18,12 +18,12 @@ struct OldHistoryView: View {
 }
 
 
-@available(iOS 16, *)
-struct NewHistoryView: View {
-    @EnvironmentObject private var tabModel: NewViewRouterModel
-    var body: some View {
-        NavigationStack(path: $tabModel.presentedPath) {
-            ExerciseHistoryView()
-        }
-    }
-}
+//@available(iOS 16, *)
+//struct NewHistoryView: View {
+//    @EnvironmentObject private var tabModel: NewViewRouterModel
+//    var body: some View {
+//        NavigationStack(path: $tabModel.presentedPath) {
+//            ExerciseHistoryView()
+//        }
+//    }
+//}
