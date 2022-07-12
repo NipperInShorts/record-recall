@@ -93,6 +93,10 @@ struct ExerciseRecordList: View {
                         } onFailure: {
                             // do nothing
                         }
+                        if (fetchRequest.isEmpty) {
+                            exercise.watchlist.toggle()
+                            dismiss()
+                        }
                     }
                 }
                 .onDelete(perform: delete)

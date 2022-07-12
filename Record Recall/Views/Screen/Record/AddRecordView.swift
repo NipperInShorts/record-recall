@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 enum Unit: String {
     case metric = "metric"
@@ -37,7 +38,7 @@ struct AddRecordView: View {
                                     Text("Your lift")
                                         .foregroundColor(.primaryBlue)
                                         .bold()
-                                    Text(viewModel.exercise?.name! ?? "Choose a lift")
+                                    Text(viewModel.exercise?.name ?? "Choose a lift")
                                         .foregroundColor(viewModel.exercise != nil
                                                          ? .secondaryBlue
                                                          : .primaryBlue
@@ -50,6 +51,24 @@ struct AddRecordView: View {
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.secondaryBlue)
+                            }
+                        }
+                        .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: viewModel.storageProvider.persistentContainer.viewContext)) { output in
+                            if (viewModel.exercise != nil) {
+                                viewModel.storageProvider.dismissIfDeleted(output, object: viewModel.exercise!) {
+                                    viewModel.exercise = nil
+                                    viewModel.exerciseName = ""
+                                } onFailure: {}
+                            }
+                        }
+                        .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextObjectsDidChange, object: viewModel.storageProvider.persistentContainer.viewContext)) { output in
+                            if let userInfo = output.userInfo {
+                                if let updatedObjects = userInfo[NSManagedObjectContext.NotificationKey.updatedObjects.rawValue] as? Set<NSManagedObject> {
+                                    if updatedObjects.contains(where: { $0.objectID == viewModel.exercise?.objectID }) {
+                                        viewModel.exercise = nil
+                                        viewModel.exerciseName = ""
+                                    }
+                                }
                             }
                         }
                         
