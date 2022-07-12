@@ -51,8 +51,11 @@ struct RecentRecords: View {
                                         .font(.system(size: 16, weight: .semibold))
                                         .foregroundColor(.primaryBlue)
                                     Spacer()
-                                    Text(Helper.getFriendlyDateString(from: Date()))
-                                        .font(.system(size: 12, weight: .medium)).foregroundColor(.secondaryBlue)
+                                    if record.date != nil {
+                                        Text(Helper.getFriendlyDateString(from: record.date!))
+                                            .font(.system(size: 12, weight: .medium))
+                                            .foregroundColor(.secondaryBlue)
+                                    }
                                 }
                                 HStack(alignment: .center, spacing: 20) {
                                     Spacer()
