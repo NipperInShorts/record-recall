@@ -24,7 +24,7 @@ struct ExerciseRecordCellView: View {
     var body: some View {
         VStack(spacing: 16) {
             HStack {
-                Text(exercise.name!)
+                Text(exercise.name ?? "")
                     .font(.title2)
                     .fontWeight(.medium).foregroundColor(.primaryBlue)
                 Spacer()
