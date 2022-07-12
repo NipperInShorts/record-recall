@@ -79,9 +79,9 @@ struct SettingsView: View {
             .navigationTitle("Settings")
         
         if #available(iOS 16, *) {
-            NavigationStack {
-                settingsView
-            }
+//            NavigationStack {
+//                settingsView
+//            }
         } else {
             NavigationView {
                 settingsView

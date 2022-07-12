@@ -21,11 +21,11 @@ struct AppTabContent: View {
             }
             .tag(TabOptions.addRecord)
         if #available(iOS 16, *) {
-            NewHistoryView()
-                .tabItem {
-                    Label("History", systemImage: "doc.plaintext")
-                }
-                .tag(TabOptions.history)
+            //            NewHistoryView()
+            //                .tabItem {
+            //                    Label("History", systemImage: "doc.plaintext")
+            //                }
+            //                .tag(TabOptions.history)
         } else {
             OldHistoryView()
                 .tabItem {
@@ -52,22 +52,22 @@ struct OldAppTabView<Content>: View where Content: View {
     }
 }
 
-@available(iOS 16.0, *)
-struct NewAppTabView<Content>: View where Content: View {
-    @EnvironmentObject var newTabModel: NewViewRouterModel
-    
-    let content: () -> Content
-    
-    init(@ViewBuilder content: @escaping ()-> Content) {
-        self.content = content
-    }
-    
-    var body: some View {
-        TabView(selection: $newTabModel.selectedTab) {
-            content()
-        }
-    }
-}
+//@available(iOS 16.0, *)
+//struct NewAppTabView<Content>: View where Content: View {
+//    @EnvironmentObject var newTabModel: NewViewRouterModel
+//    
+//    let content: () -> Content
+//    
+//    init(@ViewBuilder content: @escaping ()-> Content) {
+//        self.content = content
+//    }
+//    
+//    var body: some View {
+//        TabView(selection: $newTabModel.selectedTab) {
+//            content()
+//        }
+//    }
+//}
 
 struct TabBuilder<Content>: View where Content: View {
     let content: () -> Content
@@ -93,9 +93,9 @@ struct AppTabView: View {
     var body: some View {
         TabBuilder {
             if #available(iOS 16, *) {
-                NewAppTabView {
-                    AppTabContent()
-                }
+                //                NewAppTabView {
+                //                    AppTabContent()
+                //                }
             } else {
                 OldAppTabView {
                     AppTabContent()
@@ -114,22 +114,22 @@ struct OldModelModifier: ViewModifier {
     }
 }
 
-@available(iOS 16.0, *)
-struct NewModelModifier: ViewModifier {
-    @StateObject var newTabModel = NewViewRouterModel()
-    func body(content: Content) -> some View {
-        content
-            .environmentObject(newTabModel)
-    }
-}
+//@available(iOS 16.0, *)
+//struct NewModelModifier: ViewModifier {
+//    @StateObject var newTabModel = NewViewRouterModel()
+//    func body(content: Content) -> some View {
+//        content
+//            .environmentObject(newTabModel)
+//    }
+//}
 
 extension View {
     func injectEnvironmentObject() -> some View {
-        if #available(iOS 16, *) {
-            return modifier(NewModelModifier())
-        } else {
-            return modifier(OldModelModifier())
-        }
+        //        if #available(iOS 16, *) {
+        //            return modifier(NewModelModifier())
+        //        }
+        //        else {
+        return modifier(OldModelModifier())
     }
 }
 
