@@ -17,13 +17,13 @@ class OldViewRouterModel: ObservableObject {
     @Published var selectedDetail: String? = ""
 }
 
-//@available(iOS 16.0, *)
-//class NewViewRouterModel: ObservableObject {
-//    @Published var selectedTab: TabOptions = .home
-//    @Published var selectedDetail: String? = ""
-//    @Published var presentedPath = NavigationPath()
-//    
-//    func addPath(path: (any Hashable)) {
-//        presentedPath.append(path)
-//    }
-//}
+@available(iOS 16.0, *)
+class NewViewRouterModel: ObservableObject {
+    @Published var selectedTab: TabOptions = .home
+    @Published var selectedDetail: String? = ""
+    @Published var presentedPath = NavigationPath()
+    
+    func addPath(path: (any Hashable)) {
+        presentedPath.append(path)
+    }
+}

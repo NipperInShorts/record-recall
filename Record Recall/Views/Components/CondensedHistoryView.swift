@@ -102,11 +102,11 @@ struct CondensedHistoryView: View {
 struct ExerciseFooter: View {
     var exercise: Exercise
     var body: some View {
-//        if #available(iOS 16, *) {
-//            NewExerciseFooter(exercise: exercise)
-//        } else {
+        if #available(iOS 16, *) {
+            NewExerciseFooter(exercise: exercise)
+        } else {
             OldExerciseFooter(exercise: exercise)
-//        }
+        }
     }
 }
 
@@ -140,39 +140,39 @@ struct OldExerciseFooter: View {
     }
 }
 
-//@available(iOS 16, *)
-//struct NewExerciseFooter: View {
-//    @EnvironmentObject private var tabModel: NewViewRouterModel
-//    let exercise: Exercise
-//
-//    var body: some View {
-//        Button {
-//            tabModel.selectedTab = .history
-//            if !tabModel.presentedPath.isEmpty {
-//                tabModel.presentedPath.removeLast()
-//            }
-//            tabModel.addPath(path: exercise)
-//        } label: {
-//            Group {
-//                Text("View more ")
-//                    .font(.caption)
-//                    .foregroundColor(.primaryBlue)
-//                +
-//                Text(exercise.name ?? "")
-//                    .font(.caption)
-//                    .foregroundColor(.primaryBlue)
-//                    .bold()
-//                +
-//                Text(" records")
-//                    .font(.caption)
-//                    .foregroundColor(.primaryBlue)
-//            }
-//        }
-//        .frame(maxWidth: .infinity, alignment: .center)
-//        .padding(.vertical, 8)
-//
-//    }
-//}
+@available(iOS 16, *)
+struct NewExerciseFooter: View {
+    @EnvironmentObject private var tabModel: NewViewRouterModel
+    let exercise: Exercise
+
+    var body: some View {
+        Button {
+            tabModel.selectedTab = .history
+            if !tabModel.presentedPath.isEmpty {
+                tabModel.presentedPath.removeLast()
+            }
+            tabModel.addPath(path: exercise)
+        } label: {
+            Group {
+                Text("View more ")
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+                +
+                Text(exercise.name ?? "")
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+                    .bold()
+                +
+                Text(" records")
+                    .font(.caption)
+                    .foregroundColor(.primaryBlue)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.vertical, 8)
+
+    }
+}
 
 struct RecordLineItem: View {
     @ObservedObject var record: Record
