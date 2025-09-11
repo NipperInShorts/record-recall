@@ -13,16 +13,19 @@ struct AddExerciseView: View {
     @State private var didAttempt: Bool = false
     @ObservedObject var viewModel: AddRecordViewModel
     @FocusState private var nameIsFocused: Bool
-    
+        
     var body: some View {
-        VStack(alignment: .leading) {
-            Button {
-                viewModel.startAddMachineOver()
-                showing.toggle()
-            } label: {
-                Text("Cancel")
-                    .font(.callout)
-                    .foregroundColor(.secondaryBlue)
+        VStack(alignment: .center) {
+            HStack {
+                Button {
+                    viewModel.startAddMachineOver()
+                    showing.toggle()
+                } label: {
+                    Text("Cancel")
+                        .font(.callout)
+                        .foregroundColor(.secondaryBlue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
 
             TextField("Add Exercise", text: $viewModel.exerciseName)
@@ -45,6 +48,7 @@ struct AddExerciseView: View {
             } label: {
                 PrimaryButton(text: viewModel.exercise != nil ? "Update Exercise" : "Add Exercise")
             }
+            .frame(maxWidth: 200, alignment: .center)
         
             Text(viewModel.addExerciseStatus == .error ? "The exercise cannot be blank" : "")
                 .foregroundColor(.red)
@@ -53,6 +57,8 @@ struct AddExerciseView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 4)
         }
+        .padding()
+        .presentationCompactAdaptation(.popover)
     }
 }
 
@@ -64,14 +70,17 @@ struct AddSettingsExerciseView: View {
     @FocusState private var nameIsFocused: Bool
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Button {
-                viewModel.startAddMachineOver()
-                showing.toggle()
-            } label: {
-                Text("Cancel")
-                    .font(.callout)
-                    .foregroundColor(.secondaryBlue)
+        VStack(alignment: .center) {
+            HStack {
+                Button {
+                    viewModel.startAddMachineOver()
+                    showing.toggle()
+                } label: {
+                    Text("Cancel")
+                        .font(.callout)
+                        .foregroundColor(.secondaryBlue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             
             TextField("Add Exercise", text: $viewModel.exerciseName)
@@ -93,6 +102,7 @@ struct AddSettingsExerciseView: View {
             } label: {
                 PrimaryButton(text: viewModel.exercise != nil ? "Update Exercise" : "Add Exercise")
             }
+            .frame(maxWidth: 200, alignment: .center)
             
             Text(viewModel.addExerciseStatus == .error ? "The exercise cannot be blank" : "")
                 .foregroundColor(.red)
@@ -101,6 +111,8 @@ struct AddSettingsExerciseView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 4)
         }
+        .padding()
+        .presentationCompactAdaptation(.popover)
     }
 }
 

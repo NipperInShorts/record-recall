@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Record_RecallApp: App {
+    @AppStorage("userUnit") private var userUnit = Unit.imperial.rawValue
     let storageProvider = StorageProvider.shared
     var body: some Scene {
         WindowGroup {

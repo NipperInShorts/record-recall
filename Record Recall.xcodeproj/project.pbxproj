@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -100,6 +100,10 @@
 		A5E847A5285B72DA00E3F0F2 /* FullHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A58A43712E72E3D300A8EC8B /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		A56E8D982857C64B00205474 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -171,6 +175,7 @@
 		A56E8D9D2857C64B00205474 /* Record Recall */ = {
 			isa = PBXGroup;
 			children = (
+				A58A43712E72E3D300A8EC8B /* Extensions */,
 				A5AC32712861009200979E6D /* Model */,
 				A5632ACD285904B100071615 /* Record-Recall-Info.plist */,
 				A56E8D9E2857C64B00205474 /* Record_RecallApp.swift */,
@@ -304,6 +309,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A58A43712E72E3D300A8EC8B /* Extensions */,
 			);
 			name = "Record Recall";
 			packageProductDependencies = (
@@ -547,12 +555,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nipper.RecordRecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -583,12 +591,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nipper.RecordRecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";

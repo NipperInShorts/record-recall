@@ -60,18 +60,20 @@ struct ExercisePickerView: View {
         }
         .background(Color.backgroundBlue)
         .navigationTitle("Exercises")
-        .navigationBarItems(
-            trailing:
+        .toolbar {
+            ToolbarItem {
                 Button  {
                     showPopover.toggle()
                 } label: {
                     Image(systemName: "plus")
                 }
-        )
+            }
+        }
         .disabled(showPopover)
-        .toolbarPopover(show: $showPopover) {
+        .popover(isPresented: $showPopover, attachmentAnchor: .point(.topTrailing), arrowEdge: .top) {
             AddExerciseView(showing: $showPopover, viewModel: viewModel)
         }
+        
     }
 }
 

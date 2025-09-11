@@ -11,8 +11,7 @@ struct ExerciseManagementView: View {
     @StateObject var viewModel = AddExerciseViewModel()
     @State private var showPopover = false
     @Environment(\.dismiss) var dismiss
-    @FetchRequest(fetchRequest: Exercise.allExercises)
-    var exercises: FetchedResults<Exercise>
+    @FetchRequest(fetchRequest: Exercise.allExercises) var exercises: FetchedResults<Exercise>
     
     var body: some View {
         VStack {
@@ -58,16 +57,17 @@ struct ExerciseManagementView: View {
         }
         .background(Color.backgroundBlue)
         .navigationTitle("Exercises")
-        .navigationBarItems(
-            trailing:
+        .toolbar {
+            ToolbarItem {
                 Button  {
                     showPopover.toggle()
                 } label: {
                     Image(systemName: "plus")
                 }
-        )
+            }
+        }
         .disabled(showPopover)
-        .toolbarPopover(show: $showPopover) {
+        .popover(isPresented: $showPopover, attachmentAnchor: .point(.topTrailing), arrowEdge: .top) {
             AddSettingsExerciseView(showing: $showPopover, viewModel: viewModel)
         }
     }

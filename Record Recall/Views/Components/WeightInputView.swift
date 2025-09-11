@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct WeightInputView: View {
+    @AppStorage("userUnit") private var userUnit = Unit.imperial.rawValue
     @ObservedObject var viewModel: AddRecordViewModel
     @State private var internalWeight = ""
     
@@ -37,7 +38,7 @@ struct WeightInputView: View {
                     .foregroundColor(.primaryBlue)
                     .padding(.horizontal)
                     .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
-                        viewModel.unit = UserDefaults.standard.string(forKey: "userUnit")!
+                        viewModel.unit = userUnit
                     }
             }
   
