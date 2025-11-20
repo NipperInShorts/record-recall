@@ -13,7 +13,6 @@ struct OldHistoryView: View {
         NavigationView {
             ExerciseHistoryView()
         }
-        
     }
 }
 
@@ -24,6 +23,9 @@ struct NewHistoryView: View {
     var body: some View {
         NavigationStack(path: $tabModel.presentedPath) {
             ExerciseHistoryView()
+                .navigationDestination(for: Exercise.self) { exerciseItem in
+                    ExerciseRecordList(exercise: exerciseItem)
+                }
         }
     }
 }

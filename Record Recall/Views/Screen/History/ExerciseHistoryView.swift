@@ -24,9 +24,6 @@ struct ExerciseHistoryView: View {
                                 NavigationLink(value: exercise, label: {
                                     ExerciseRecordCellView(exercise: exercise)
                                 })
-                                .navigationDestination(for: Exercise.self) { exerciseItem in
-                                    ExerciseRecordList(exercise: exerciseItem)
-                                }
                             } else  {
                                 NavigationLink(tag: exercise.name!, selection: $tabModel.selectedDetail) {
                                     ExerciseRecordList(exercise: exercise)
@@ -99,6 +96,15 @@ struct NotesView: View {
 
 struct WeightRepsView: View {
     @ObservedObject var record: Record
+    @AppStorage("userUnit") private var userUnitRaw = Unit.imperial.rawValue
+    private var displayUnit: Unit { Unit(rawValue: userUnitRaw) ?? .imperial }
+    
+    private func convertedWeight() -> Double {
+        let storedUnit = Unit(rawValue: record.unit ?? Unit.metric.rawValue) ?? .metric
+        let kg = record.weight.toKilograms(from: storedUnit)
+        return kg.fromKilograms(to: displayUnit)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Last Record")
@@ -107,26 +113,26 @@ struct WeightRepsView: View {
                 .italic()
                 .foregroundColor(.primaryBlue)
             HStack {
-                if (!(Metric(value: record.weight).formattedValue == "0") || record.weight > 0) {
+                if convertedWeight() > 0 {
                     HStack(spacing: 2) {
-                        Text(Metric(value: record.weight).formattedValue)
+                        Text(Metric(value: convertedWeight()).formattedValue)
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(.primaryBlue)
                             .minimumScaleFactor(0.75)
                             .lineLimit(1)
-                        Text(record.unit == Unit.metric.rawValue ? "kg" : "lb")
+                        Text(displayUnit == .metric ? "kg" : "lb")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondaryBlue)
                     }
                     
                 }
-                if (!(Metric(value: record.weight).formattedValue == "0") || record.weight > 0) {
+                if convertedWeight() > 0 {
                     Text("x")
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.primaryBlue)
                 }
                 HStack(spacing: 2) {
-                    Text("\(record.reps, specifier: "%.0f")")
+                    Text(String(format: "%.0f", record.reps))
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.primaryBlue)
                         .minimumScaleFactor(0.75)
@@ -143,5 +149,4 @@ struct WeightRepsView: View {
         }
     }
 }
-
 

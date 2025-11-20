@@ -14,6 +14,24 @@ enum Unit: String {
     case imperial = "imperial"
 }
 
+extension Double {
+    // Converts self from source unit to kilograms
+    func toKilograms(from source: Unit) -> Double {
+        switch source {
+        case .metric:   return self
+        case .imperial: return self * 0.45359237
+        }
+    }
+    
+    // Converts self from kilograms to target unit
+    func fromKilograms(to target: Unit) -> Double {
+        switch target {
+        case .metric:   return self
+        case .imperial: return self / 0.45359237
+        }
+    }
+}
+
 struct AddRecordView: View {
     
     @StateObject private var viewModel = AddRecordViewModel()

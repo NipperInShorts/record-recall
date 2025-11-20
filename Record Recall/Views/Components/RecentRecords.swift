@@ -9,7 +9,10 @@ import SwiftUI
 import CoreData
 
 struct RecentRecords: View {
+    @AppStorage("userUnit") private var userUnitRaw = Unit.imperial.rawValue
     @FetchRequest var records: FetchedResults<Record>
+    
+    private var displayUnit: Unit { Unit(rawValue: userUnitRaw) ?? .imperial }
     
     init() {
         let request: NSFetchRequest<Record> = Record.fetchRequest()
@@ -20,6 +23,12 @@ struct RecentRecords: View {
         ]
         request.predicate = NSPredicate(format: "%K != nil", #keyPath(Record.exercise.name))
         _records = FetchRequest(fetchRequest: request)
+    }
+    
+    private func convertedWeight(for record: Record) -> Double {
+        let storedUnit = Unit(rawValue: record.unit ?? Unit.metric.rawValue) ?? .metric
+        let kg = record.weight.toKilograms(from: storedUnit)
+        return kg.fromKilograms(to: displayUnit)
     }
     
     var body: some View {
@@ -65,10 +74,10 @@ struct RecentRecords: View {
                                             .foregroundColor(.secondaryBlue)
                                             .textCase(.uppercase)
                                         HStack(spacing: 2) {
-                                            Text(Metric(value: record.weight).formattedValue)
+                                            Text(Metric(value: convertedWeight(for: record)).formattedValue)
                                                 .font(.system(size: 24, weight: .semibold))
                                                 .foregroundColor(.primaryBlue)
-                                            Text(record.unit! == Unit.imperial.rawValue ? "lb" : "kg")
+                                            Text(displayUnit == .imperial ? "lb" : "kg")
                                                 .font(.system(size: 12, weight: .medium))
                                                 .foregroundColor(.secondaryBlue)
                                         }

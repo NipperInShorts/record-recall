@@ -16,8 +16,6 @@ extension Sequence where Iterator.Element: Hashable {
     }
 }
 
-
-
 struct ExerciseRecordList: View {
     @ObservedObject var viewModel: AddRecordViewModel = AddRecordViewModel()
     @ObservedObject var historyModel: HistoryViewModel = HistoryViewModel()
@@ -26,11 +24,14 @@ struct ExerciseRecordList: View {
     @FetchRequest var fetchRequest: FetchedResults<Record>
     @ObservedObject var exercise: Exercise
     @Environment(\.dismiss) var dismiss
-    
+    @AppStorage("userUnit") private var userUnit = Unit.imperial.rawValue
+
+
+
     var body: some View {
         List {
             Section {
-                ForEach(fetchRequest, id:\.self) { record in
+                ForEach(sortedRecords, id:\.self) { record in
                     NavigationLink(destination: {
                         RecordLineDetail(record: record)
                     }, label: {
@@ -38,18 +39,18 @@ struct ExerciseRecordList: View {
                             if record.date != nil {
                                 HStack {
                                     HStack {
-                                        if (!(Metric(value: record.weight).formattedValue == "0") || record.weight > 0) {
+                                        if convertedWeight(for: record, to: displayUnit) > 0 {
                                             HStack(spacing: 2) {
-                                                Text(Metric(value: record.weight).formattedValue)
+                                                Text(Metric(value: convertedWeight(for: record, to: displayUnit)).formattedValue)
                                                     .font(.system(size: 24, weight: .semibold))
                                                     .foregroundColor(.primaryBlue)
-                                                Text(record.unit == Unit.metric.rawValue ? "kg" : "lb")
+                                                Text(displayUnit == .metric ? "kg" : "lb")
                                                     .font(.system(size: 12, weight: .medium))
                                                     .foregroundColor(.secondaryBlue)
                                             }
                                             
                                         }
-                                        if (!(Metric(value: record.weight).formattedValue == "0") || record.weight > 0) {
+                                        if convertedWeight(for: record, to: displayUnit) > 0 {
                                             Text("x")
                                                 .font(.system(size: 12, weight: .semibold))
                                                 .foregroundColor(.primaryBlue)
@@ -111,7 +112,7 @@ struct ExerciseRecordList: View {
                         ForEach(sortedReps, id:\.self) { theRep in
                             Button {
                                 fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                                    NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!),
+                                    NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name ?? ""),
                                     NSPredicate(format: "reps = %@", Metric(value: theRep).formattedValue)
                                 ])
                                 sortedRep = Metric(value: theRep).formattedValue
@@ -122,7 +123,7 @@ struct ExerciseRecordList: View {
                         }
                         Button(role: .destructive) {
                             fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name!)
+                                NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name ?? "")
                             ])
                             sortedRep = ""
                         } label: {
@@ -168,6 +169,7 @@ struct ExerciseRecordList: View {
     }
     
     func fetchInitial() {
+        
         fetchRequest.nsPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), self.exercise.name ?? "")
         ])
@@ -188,4 +190,27 @@ struct ExerciseRecordList: View {
             NSSortDescriptor(keyPath: \Record.weight, ascending: false),
         ], predicate: NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Record.exercise.name), exercise.name ?? ""))
     }
+    
+    private var displayUnit: Unit {
+        Unit(rawValue: userUnit) ?? .imperial
+    }
+
+    private func convertedWeight(for record: Record, to target: Unit) -> Double {
+        let rawUnit = Unit(rawValue: record.unit ?? Unit.metric.rawValue) ?? .metric
+        let kg = record.weight.toKilograms(from: rawUnit)
+        return kg.fromKilograms(to: target)
+    }
+
+    private var sortedRecords: [Record] {
+        fetchRequest.sorted { lhs, rhs in
+            let lhsUnit: Unit = Unit(rawValue: lhs.unit ?? Unit.metric.rawValue) ?? .metric
+            let rhsUnit: Unit = Unit(rawValue: rhs.unit ?? Unit.metric.rawValue) ?? .metric
+
+            let lhsKg = lhs.weight.toKilograms(from: lhsUnit)
+            let rhsKg = rhs.weight.toKilograms(from: rhsUnit)
+
+            return lhsKg > rhsKg
+        }
+    }
 }
+

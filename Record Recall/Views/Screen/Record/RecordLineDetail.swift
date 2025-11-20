@@ -11,8 +11,11 @@ struct RecordLineDetail: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = AddRecordViewModel()
     @State private var errorMessage = ""
+    @AppStorage("userUnit") private var userUnitRaw = Unit.imperial.rawValue
     
     var record: Record
+    
+    private var displayUnit: Unit { Unit(rawValue: userUnitRaw) ?? .imperial }
     
     var body: some View {
         ScrollView {
@@ -69,6 +72,11 @@ struct RecordLineDetail: View {
             }
             .onAppear {
                 viewModel.initializeView(with: record)
+                let storedUnit = Unit(rawValue: record.unit ?? Unit.metric.rawValue) ?? .metric
+                let kg = record.weight.toKilograms(from: storedUnit)
+                let displayValue = kg.fromKilograms(to: displayUnit)
+                viewModel.weight = Metric(value: displayValue).formattedValue
+                viewModel.unit = displayUnit.rawValue
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -84,14 +92,29 @@ struct RecordLineDetail: View {
             }
             .padding(.horizontal)
         }
+        .onChange(of: userUnitRaw) { _ in
+            // Parse current weight string
+            let currentString = viewModel.weight
+            let currentNumber = Double(currentString) ?? 0
+            // Determine the previous unit from viewModel.unit, defaulting to metric
+            let previousUnit = Unit(rawValue: viewModel.unit) ?? .metric
+            // Convert current display value to kg then to new display unit
+            let kg = currentNumber.toKilograms(from: previousUnit)
+            let newDisplayUnit = Unit(rawValue: userUnitRaw) ?? .imperial
+            let newValue = kg.fromKilograms(to: newDisplayUnit)
+            viewModel.weight = Metric(value: newValue).formattedValue
+            viewModel.unit = newDisplayUnit.rawValue
+        }
         .navigationTitle("Edit \(record.exercise?.name ?? "") Record")
         .background(Color.backgroundBlue)
     }
     
     func updateRecord() {
         do {
+            record.unit = displayUnit.rawValue
             try viewModel.updateData(record: record)
             dismiss()
         } catch {}
     }
 }
+
